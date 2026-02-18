@@ -1,35 +1,231 @@
 [
     {
-        "id": "concept_001",
+        "id": "java-oop",
         "title": "Object-Oriented Programming (OOP)",
-        "description": "OOP is a programming paradigm based on the concept of 'objects', which can contain data and code. The four main pillars are:",
+        "description": "OOP is a programming paradigm based on the concept of 'objects', which can contain data and code. The four main pillars of OOP in Java are:",
         "points": [
             "Encapsulation: Bundling data and methods that operate on that data within a single unit (class).",
-            "Abstraction: Hiding complex implementation details and showing only the necessary features of an object.",
-            "Inheritance: Creating new classes based on existing classes to promote code reuse.",
-            "Polymorphism: The ability of an object to take on many forms (e.g., method overloading and overriding)."
-        ]
+            "Inheritance: Mechanism where a new class inherits properties and behaviors from an existing class.",
+            "Polymorphism: Ability of an object to take on many forms (e.g., method overloading and overriding).",
+            "Abstraction: Hiding complex implementation details and showing only the essential features of the object."
+        ],
+        "category": "java"
     },
     {
-        "id": "concept_002",
-        "title": "SOLID Principles",
-        "description": "SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.",
+        "id": "java-jvm",
+        "title": "JVM, JRE, and JDK",
+        "description": "Understanding the Java ecosystem structure is crucial for every developer.",
         "points": [
-            "S - Single Responsibility Principle",
-            "O - Open/Closed Principle",
-            "L - Liskov Substitution Principle",
-            "I - Interface Segregation Principle",
-            "D - Dependency Inversion Principle"
-        ]
+            "JDK (Java Development Kit): The full development environment including the JRE, compilers (javac), and tools.",
+            "JRE (Java Runtime Environment): The runtime environment required to run Java applications. Includes JVM and libraries.",
+            "JVM (Java Virtual Machine): The engine that executes Java bytecode. It provides platform independence (Write Once, Run Anywhere)."
+        ],
+        "category": "java"
     },
     {
-        "id": "concept_003",
+        "id": "java-collections",
+        "title": "Java Collections Framework",
+        "description": "A unified architecture for representing and manipulating collections of objects.",
+        "points": [
+            "List: Ordered collection (e.g., ArrayList, LinkedList). Allows duplicates.",
+            "Set: Unordered collection that does not allow duplicates (e.g., HashSet, TreeSet).",
+            "Map: Object that maps keys to values. No duplicate keys allowed (e.g., HashMap, TreeMap).",
+            "Queue: Collection used to hold multiple elements prior to processing (e.g., PriorityQueue)."
+        ],
+        "category": "java"
+    },
+    {
+        "id": "java-exception",
+        "title": "Exception Handling",
+        "description": "Mechanism to handle runtime errors and maintain normal application flow.",
+        "points": [
+            "Checked Exceptions: Exceptions checked at compile-time (e.g., IOException). Must be handled.",
+            "Unchecked Exceptions: Exceptions occurring at runtime (e.g., NullPointerException). Optional handling.",
+            "Try-Catch-Finally: Block structure to handle exceptions and execute cleanup code."
+        ],
+        "category": "java"
+    },
+    {
+        "id": "java-stream",
+        "title": "Java Streams API",
+        "description": "Introduced in Java 8 to process sequences of elements declaratively.",
+        "points": [
+            "Intermediate Operations: Transform a stream into another stream (e.g., filter, map, sorted). Lazy execution.",
+            "Terminal Operations: Produce a result or side-effect (e.g., collect, forEach, reduce). Triggers processing.",
+            "Parallel Streams: Enable parallel processing of data leveraging multi-core architectures."
+        ],
+        "category": "java"
+    },
+    {
+        "id": "java-threads",
+        "title": "Multithreading & Concurrency",
+        "description": "Concurrent execution of two or more parts of a program for maximum CPU utilization.",
+        "points": [
+            "Thread Class vs Runnable Interface: Two ways to create threads.",
+            "Synchronization: Controlling access to shared resources to prevent thread interference.",
+            "Executor Framework: Higher-level API for managing thread pools and execution."
+        ],
+        "category": "java"
+    },
+    {
+        "id": "spring-ioc",
+        "title": "Inversion of Control (IoC) & DI",
+        "description": "The core principle of the Spring Framework that decouples object creation from their usage.",
+        "points": [
+            "IoC Container: Manages the lifecycle and configuration of application objects (Beans).",
+            "Dependency Injection (DI): Dependencies are 'injected' into objects via Constructor, Setter, or Field injection.",
+            "Benefits: Loose coupling, easier testing, and better code maintainability."
+        ],
+        "category": "spring"
+    },
+    {
+        "id": "spring-aop",
+        "title": "Aspect-Oriented Programming (AOP)",
+        "description": "A paradigm to increase modularity by separating cross-cutting concerns.",
+        "points": [
+            "Cross-cutting Concerns: Logic used across multiple modules (e.g., Logging, Security, Transaction).",
+            "Aspect: Module encapsulating a concern.",
+            "Advice: Action taken at a join point (Before, After, Around)."
+        ],
+        "category": "spring"
+    },
+    {
+        "id": "spring-beans",
+        "title": "Spring Bean Scopes",
+        "description": "Defines the lifecycle and visibility of Spring beans.",
+        "points": [
+            "Singleton: Default scope. Only one instance per Spring container.",
+            "Prototype: A new instance is created every time the bean is requested.",
+            "Request/Session: Scopes specific to web-aware Spring ApplicationContext."
+        ],
+        "category": "spring"
+    },
+    {
+        "id": "spring-mvc",
+        "title": "Spring MVC Flow",
+        "description": "Request processing workflow in Spring Web MVC.",
+        "points": [
+            "DispatcherServlet: Front controller that receives all requests.",
+            "HandlerMapping: Maps request to appropriate Controller.",
+            "ViewResolver: Resolves logical view names to actual views (JSP, Thymeleaf)."
+        ],
+        "category": "spring"
+    },
+    {
+        "id": "springboot-autoconfig",
+        "title": "Spring Boot Auto-Configuration",
+        "description": "Opinionated defaults to configure Spring applications automatically.",
+        "points": [
+            "@EnableAutoConfiguration: Triggers auto-configuration based on classpath dependencies.",
+            "Conditional Configuration: Beans are created only if specific classes or properties are present.",
+            "Benefits: Eliminates boilerplate configuration code."
+        ],
+        "category": "springboot"
+    },
+    {
+        "id": "springboot-actuator",
+        "title": "Spring Boot Actuator",
+        "description": "Production-ready features to monitor and manage your application.",
+        "points": [
+            "Endpoints: Exposes operational information (e.g., /health, /metrics, /info).",
+            "Customization: Create custom endpoints or secure existing ones.",
+            "Health Checks: Monitor database connections, disk space, and other components."
+        ],
+        "category": "springboot"
+    },
+    {
+        "id": "springboot-annotations",
+        "title": "Key Spring Boot Annotations",
+        "description": "Essential annotations for building Spring Boot applications.",
+        "points": [
+            "@SpringBootApplication: Meta-annotation combining @Configuration, @EnableAutoConfiguration, and @ComponentScan.",
+            "@RestController: Specialized version of @Controller that automatically writes response to body.",
+            "@Service, @Repository, @Component: Stereotype annotations for defining beans."
+        ],
+        "category": "springboot"
+    },
+    {
+        "id": "mysql-normalization",
         "title": "Database Normalization",
-        "description": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.",
+        "description": "Process of organizing data to reduce redundancy and improve integrity.",
         "points": [
-            "1NF: Eliminate repeating groups.",
-            "2NF: Eliminate redundant data (partial dependency).",
-            "3NF: Eliminate columns not dependent on key (transitive dependency)."
-        ]
+            "1NF: Atomic values, no repeating groups.",
+            "2NF: 1NF + no partial dependencies.",
+            "3NF: 2NF + no transitive dependencies."
+        ],
+        "category": "mysql"
+    },
+    {
+        "id": "mysql-acid",
+        "title": "ACID Properties",
+        "description": "Guarantees for reliable database transactions.",
+        "points": [
+            "Atomicity: All operations in a transaction succeed or fail together.",
+            "Consistency: Database moves from one valid state to another.",
+            "Isolation: Concurrent transactions do not affect each other.",
+            "Durability: Committed data is saved permanently."
+        ],
+        "category": "mysql"
+    },
+    {
+        "id": "mysql-indexes",
+        "title": "Indexes",
+        "description": "Data structures that improve speed of data retrieval operations.",
+        "points": [
+            "Clustered Index: Sorts and stores data rows in the table based on key values (Primary Key).",
+            "Non-Clustered Index: Structure separate from data rows. Contains key values and pointers to data.",
+            "Trade-off: Faster reads (SELECT) but slower writes (INSERT/UPDATE/DELETE)."
+        ],
+        "category": "mysql"
+    },
+    {
+        "id": "mysql-joins",
+        "title": "SQL Joins",
+        "description": "Clause used to combine rows from two or more tables.",
+        "points": [
+            "INNER JOIN: Returns records with matching values in both tables.",
+            "LEFT JOIN: Returns all records from left table, and matched records from right.",
+            "RIGHT JOIN: Returns all records from right table, and matched records from left.",
+            "FULL OUTER JOIN: Returns all records when there is a match in either left or right."
+        ],
+        "category": "mysql"
+    },
+    {
+        "id": "coding-complexity",
+        "title": "Big O Notation",
+        "description": "Mathematical notation to describe algorithm efficiency.",
+        "points": [
+            "O(1): Constant Time - direct access.",
+            "O(log n): Logarithmic Time - binary search.",
+            "O(n): Linear Time - simply looping through elements.",
+            "O(n log n): Linearithmic Time - effective sorting (Merge Sort, Quick Sort).",
+            "O(n^2): Quadratic Time - nested loops."
+        ],
+        "category": "coding"
+    },
+    {
+        "id": "coding-datastructures",
+        "title": "Common Data Structures",
+        "description": "Ways of organizing and storing data for efficient access and modification.",
+        "points": [
+            "Array: Contiguous memory locations. Fast access O(1), fixed size.",
+            "LinkedList: Nodes with data and address. Dynamic size, slow access O(n).",
+            "Stack: LIFO (Last In First Out). Push/Pop operations.",
+            "Queue: FIFO (First In First Out). Enqueue/Dequeue operations.",
+            "HashMap: Key-Value pairs. Fast lookups O(1) avg."
+        ],
+        "category": "coding"
+    },
+    {
+        "id": "coding-algorithms",
+        "title": "Essential Algorithms",
+        "description": "Step-by-step procedures for calculations and data processing.",
+        "points": [
+            "Sorting: Bubble, Selection, Insertion, Merge, Quick Sort.",
+            "Searching: Linear Search, Binary Search.",
+            "Graph Traversal: BFS (Breadth-First Search), DFS (Depth-First Search).",
+            "Dynamic Programming: Breaking down problems into simpler sub-problems."
+        ],
+        "category": "coding"
     }
 ]
