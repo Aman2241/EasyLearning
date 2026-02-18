@@ -40,8 +40,17 @@ const ContactPage = () => {
                             </div>
                             <div>
                                 <h3 className="text-sm uppercase tracking-wider text-gray-500 font-bold mb-1">Email</h3>
-                                <a href="mailto:aman25722@gmail.com" className="text-2xl text-white font-medium hover:text-blue-400 transition-colors">
+                                <a href="mailto:aman25722@gmail.com" className="text-2xl text-white font-medium hover:text-blue-400 transition-colors block mb-2">
                                     aman25722@gmail.com
+                                </a>
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=aman25722@gmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 text-sm bg-red-500/10 text-red-400 px-3 py-1.5 rounded-full hover:bg-red-500/20 transition-colors"
+                                >
+                                    <Mail size={14} />
+                                    Open in Gmail
                                 </a>
                             </div>
                         </div>
