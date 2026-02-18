@@ -14,7 +14,7 @@ const Header = () => {
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105" style={{ background: 'linear-gradient(to bottom right, #60a5fa, #a855f7)' }}>
                         <Terminal size={20} color="white" />
                     </div>
-                    <span className="text-xl font-bold text-gradient">Java Mastery</span>
+                    <span className="text-xl font-bold text-gradient">NextGen Dev</span>
                 </Link>
 
                 <nav className="flex items-center gap-4 md:gap-8">
