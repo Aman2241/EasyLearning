@@ -16,7 +16,7 @@ const Loading = () => (
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router>
       <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f1f5f9', position: 'relative' }}>
         <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%', borderRadius: '50%', background: 'rgba(59, 130, 246, 0.1)', filter: 'blur(100px)' }} />
