@@ -17,7 +17,7 @@ const Header = () => {
                     <span className="text-xl font-bold text-gradient">Java Mastery</span>
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="flex items-center gap-4 md:gap-8">
                     <Link
                         to="/"
                         className={`nav-link ${isActive('/') ? 'active' : ''}`}
@@ -29,6 +29,12 @@ const Header = () => {
                         className={`nav-link ${isActive('/concepts') ? 'active' : ''}`}
                     >
                         Concepts
+                    </Link>
+                    <Link
+                        to="/contact"
+                        className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+                    >
+                        Contact
                     </Link>
                 </nav>
             </div>
