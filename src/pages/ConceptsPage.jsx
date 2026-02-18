@@ -57,10 +57,13 @@ const ConceptsPage = () => {
                     <button
                         key={cat.id}
                         onClick={() => setSelectedCategory(cat.id)}
-                        className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.id
-                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-gray-200'
-                            }`}
+                        className={`px-6 py-2 rounded-full text-sm font-medium transition-all`}
+                        style={{
+                            backgroundColor: selectedCategory === cat.id ? '#2563eb' : 'rgba(30, 41, 59, 0.8)',
+                            color: selectedCategory === cat.id ? '#ffffff' : '#94a3b8',
+                            border: '1px solid rgba(148, 163, 184, 0.1)',
+                            cursor: 'pointer'
+                        }}
                     >
                         {cat.label}
                     </button>
@@ -80,12 +83,21 @@ const ConceptsPage = () => {
                         <div style={{ position: 'absolute', top: 0, right: 0, width: '200px', height: '200px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '50%', filter: 'blur(60px)', transform: 'translate(50%, -50%)' }}></div>
 
                         <div className="mb-2">
-                            <span className={`text-xs font-bold px-2 py-1 rounded uppercase tracking-wider ${concept.category === 'java' ? 'text-orange-400 bg-orange-500/10' :
-                                concept.category === 'spring' ? 'text-green-400 bg-green-500/10' :
-                                    concept.category === 'springboot' ? 'text-yellow-400 bg-yellow-500/10' :
-                                        concept.category === 'mysql' ? 'text-blue-400 bg-blue-500/10' :
-                                            'text-purple-400 bg-purple-500/10'
-                                }`}>
+                            <span
+                                className="text-xs font-bold px-2 py-1 rounded uppercase tracking-wider"
+                                style={{
+                                    color: concept.category === 'java' ? '#fb923c' :
+                                        concept.category === 'spring' ? '#4ade80' :
+                                            concept.category === 'springboot' ? '#facc15' :
+                                                concept.category === 'mysql' ? '#60a5fa' :
+                                                    '#c084fc',
+                                    backgroundColor: concept.category === 'java' ? 'rgba(251, 146, 60, 0.15)' :
+                                        concept.category === 'spring' ? 'rgba(74, 222, 128, 0.15)' :
+                                            concept.category === 'springboot' ? 'rgba(250, 204, 21, 0.15)' :
+                                                concept.category === 'mysql' ? 'rgba(96, 165, 250, 0.15)' :
+                                                    'rgba(192, 132, 252, 0.15)'
+                                }}
+                            >
                                 {concept.category}
                             </span>
                         </div>
