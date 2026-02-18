@@ -1,0 +1,35 @@
+[
+    {
+        "id": "concept_001",
+        "title": "Object-Oriented Programming (OOP)",
+        "description": "OOP is a programming paradigm based on the concept of 'objects', which can contain data and code. The four main pillars are:",
+        "points": [
+            "Encapsulation: Bundling data and methods that operate on that data within a single unit (class).",
+            "Abstraction: Hiding complex implementation details and showing only the necessary features of an object.",
+            "Inheritance: Creating new classes based on existing classes to promote code reuse.",
+            "Polymorphism: The ability of an object to take on many forms (e.g., method overloading and overriding)."
+        ]
+    },
+    {
+        "id": "concept_002",
+        "title": "SOLID Principles",
+        "description": "SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.",
+        "points": [
+            "S - Single Responsibility Principle",
+            "O - Open/Closed Principle",
+            "L - Liskov Substitution Principle",
+            "I - Interface Segregation Principle",
+            "D - Dependency Inversion Principle"
+        ]
+    },
+    {
+        "id": "concept_003",
+        "title": "Database Normalization",
+        "description": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.",
+        "points": [
+            "1NF: Eliminate repeating groups.",
+            "2NF: Eliminate redundant data (partial dependency).",
+            "3NF: Eliminate columns not dependent on key (transitive dependency)."
+        ]
+    }
+]
