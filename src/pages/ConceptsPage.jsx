@@ -15,9 +15,22 @@ const ConceptsPage = () => {
         { id: 'coding', label: 'Coding' }
     ];
 
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const conceptsPerPage = 10;
+
+    // Reset to first page when category changes
+    React.useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedCategory]);
+
     const filteredConcepts = selectedCategory === 'all'
         ? conceptsData
         : conceptsData.filter(c => c.category === selectedCategory);
+
+    const indexOfLastConcept = currentPage * conceptsPerPage;
+    const indexOfFirstConcept = indexOfLastConcept - conceptsPerPage;
+    const currentConcepts = filteredConcepts.slice(indexOfFirstConcept, indexOfLastConcept);
+    const totalPages = Math.ceil(filteredConcepts.length / conceptsPerPage);
 
     return (
         <div className="page-container container">
@@ -45,8 +58,8 @@ const ConceptsPage = () => {
                         key={cat.id}
                         onClick={() => setSelectedCategory(cat.id)}
                         className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.id
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-gray-200'
+                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-gray-200'
                             }`}
                     >
                         {cat.label}
@@ -55,7 +68,7 @@ const ConceptsPage = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-8" style={{ maxWidth: '900px', margin: '0 auto' }}>
-                {filteredConcepts.map((concept, index) => (
+                {currentConcepts.map((concept, index) => (
                     <motion.div
                         key={concept.id}
                         initial={{ opacity: 0, x: -20 }}
@@ -68,10 +81,10 @@ const ConceptsPage = () => {
 
                         <div className="mb-2">
                             <span className={`text-xs font-bold px-2 py-1 rounded uppercase tracking-wider ${concept.category === 'java' ? 'text-orange-400 bg-orange-500/10' :
-                                    concept.category === 'spring' ? 'text-green-400 bg-green-500/10' :
-                                        concept.category === 'springboot' ? 'text-yellow-400 bg-yellow-500/10' :
-                                            concept.category === 'mysql' ? 'text-blue-400 bg-blue-500/10' :
-                                                'text-purple-400 bg-purple-500/10'
+                                concept.category === 'spring' ? 'text-green-400 bg-green-500/10' :
+                                    concept.category === 'springboot' ? 'text-yellow-400 bg-yellow-500/10' :
+                                        concept.category === 'mysql' ? 'text-blue-400 bg-blue-500/10' :
+                                            'text-purple-400 bg-purple-500/10'
                                 }`}>
                                 {concept.category}
                             </span>
@@ -96,6 +109,37 @@ const ConceptsPage = () => {
                     </motion.div>
                 ))}
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className="flex justify-center items-center gap-2 mt-12 mb-12">
+                    <button
+                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        disabled={currentPage === 1}
+                        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${currentPage === 1
+                            ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
+                            : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                            }`}
+                    >
+                        Prev
+                    </button>
+
+                    <span className="text-gray-400 text-sm">
+                        Page {currentPage} of {totalPages}
+                    </span>
+
+                    <button
+                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                        className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${currentPage === totalPages
+                            ? 'bg-gray-800 text-gray-600 cursor-not-allowed'
+                            : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+                            }`}
+                    >
+                        Next
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
