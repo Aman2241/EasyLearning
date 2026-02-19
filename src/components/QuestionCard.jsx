@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, Edit3, Save } from 'lucide-react';
+import { ChevronDown, ChevronUp, Edit3, Save, Code } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const CodeTabs = ({ snippets }) => {
     const [activeTab, setActiveTab] = useState(0);
@@ -35,6 +36,7 @@ const QuestionCard = ({ questionData }) => {
     const [note, setNote] = useState('');
     const [isNoteOpen, setIsNoteOpen] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const savedNote = localStorage.getItem(`note_${questionData.id}`);
@@ -47,6 +49,20 @@ const QuestionCard = ({ questionData }) => {
         localStorage.setItem(`note_${questionData.id}`, note);
         setIsSaved(true);
         setTimeout(() => setIsSaved(false), 2000);
+    };
+
+    const handleOpenCompiler = () => {
+        let initialCode = "";
+        let lang = "java"; // Default
+
+        if (questionData.codeSnippets && questionData.codeSnippets.length > 0) {
+            initialCode = questionData.codeSnippets[0].code;
+            lang = questionData.codeSnippets[0].lang.toLowerCase();
+        } else if (questionData.codeSnippet) {
+            initialCode = questionData.codeSnippet;
+        }
+
+        navigate('/compiler', { state: { initialCode, language: lang } });
     };
 
     const getDifficultyColorClass = (diff) => {
@@ -68,6 +84,15 @@ const QuestionCard = ({ questionData }) => {
                             {questionData.difficulty}
                         </span>
                         <span className="text-gray-500 text-sm">#{questionData.id}</span>
+                        {(questionData.category === "Coding" || questionData.codeSnippets || questionData.codeSnippet) && (
+                            <button
+                                onClick={handleOpenCompiler}
+                                className="flex items-center gap-2 px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full hover:bg-blue-500/20 transition-colors text-xs font-medium border border-blue-500/30"
+                            >
+                                <Code size={14} />
+                                Open in Compiler
+                            </button>
+                        )}
                     </div>
                     <button
                         onClick={() => setIsNoteOpen(!isNoteOpen)}

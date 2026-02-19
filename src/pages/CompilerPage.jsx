@@ -76,7 +76,7 @@ const CompilerPage = () => {
     };
 
     return (
-        <div className="page-container container h-[calc(100vh-100px)] flex flex-col pt-4">
+        <div className="page-container container h-[calc(100vh-100px)] flex flex-col">
             <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
                     <Code className="text-blue-400" size={24} />
