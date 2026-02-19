@@ -31,6 +31,12 @@ const Header = () => {
                         Concepts
                     </Link>
                     <Link
+                        to="/interview-questions"
+                        className={`nav-link ${isActive('/interview-questions') ? 'active' : ''}`}
+                    >
+                        Interview Questions
+                    </Link>
+                    <Link
                         to="/contact"
                         className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
                     >

@@ -1,0 +1,131 @@
+[
+    {
+        "id": 1,
+        "question": "What is the difference between '==' and '.equals()' in Java?",
+        "answer": "The '==' operator compares references (memory addresses) for objects and values for primitives. The '.equals()' method compares the content or state of the objects (if overridden).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Explain the concept of Immutable String in Java.",
+        "answer": "Strings in Java are immutable, meaning once a String object is created, its value cannot be changed. This is achieved by making the String class final and storing the character array as private final.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What are the SOLID principles?",
+        "answer": "SOLID stands for Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. These are design principles for writing maintainable and scalable software.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Explain the difference between Monolithic and Microservices architecture.",
+        "answer": "Monolithic architecture builds an application as a single unit, while Microservices architecture structures an application as a collection of loose coupled services.",
+        "category": "System Design",
+        "experienceLevel": "3-5",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "How does Garbage Collection work in Java?",
+        "answer": "Garbage Collection is the process of reclaiming runtime unused memory automatically. The JVM's Garbage Collector identifies objects that are no longer reachable and deletes them to free up memory.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "jvm",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is the CAP theorem?",
+        "answer": "The CAP theorem states that a distributed system can only provide two of the following three guarantees: Consistency, Availability, and Partition Tolerance.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Explain the concept of Sharding in databases.",
+        "answer": "Sharding is a method of splitting and storing a single logical dataset in multiple databases. It spreads the load and data across multiple servers.",
+        "category": "Database",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "database",
+            "scaling"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is a Deadlock and how can it be prevented?",
+        "answer": "A deadlock is a situation where two or more threads are blocked forever, waiting for each other. It can be prevented by avoiding circular wait, hold and wait, or by using timeouts.",
+        "category": "Concurrency",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "Explain the difference between Abstract Class and Interface.",
+        "answer": "Abstract classes can have state (fields) and constructors, while interfaces (before Java 8) solely defined a contract. Interfaces effectively support multiple inheritance of type.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is Dependency Injection in Spring?",
+        "answer": "Dependency Injection is a design pattern used to implement IoC (Inversion of Control). It allows the creation of dependent objects outside of a class and provides those objects to a class in different ways.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring-framework",
+            "recently-asked"
+        ]
+    },
+    {
+        "id": 11,
+        "question": "How do you handle distributed transactions in Microservices?",
+        "answer": "Distributed transactions can be handled using the Saga pattern (Choreography or Orchestration) or Two-Phase Commit (2PC), though Sagas are generally preferred for scalability.",
+        "category": "Microservices",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices",
+            "architecture"
+        ]
+    },
+    {
+        "id": 12,
+        "question": "Describe the difference between clustered and non-clustered indexes.",
+        "answer": "A clustered index determines the physical order of data in a table. A non-clustered index stores the data at one place and indices at another place.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "database",
+            "sql"
+        ]
+    }
+]
