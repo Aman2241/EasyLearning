@@ -127,5 +127,2793 @@
             "database",
             "sql"
         ]
+    },
+    {
+        "id": 101,
+        "question": "What is the default value of the local variables?",
+        "answer": "Local variables do not have a default value. They must be initialized before use.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 102,
+        "question": "What is the size of int in Java?",
+        "answer": "The size of int is 4 bytes (32 bits).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 103,
+        "question": "Can we overload the main method?",
+        "answer": "Yes, we can overload the main method, but the JVM will always call valid public static void main(String[] args).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 104,
+        "question": "What is the difference between StringBuffer and StringBuilder?",
+        "answer": "StringBuffer is synchronized (thread-safe) and slower, while StringBuilder is not synchronized and faster.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 105,
+        "question": "What is an abstract class?",
+        "answer": "An abstract class is a class that cannot be instantiated and may contain abstract methods (without body) as well as concrete methods.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java",
+            "oops"
+        ]
+    },
+    {
+        "id": 106,
+        "question": "Can an interface strictly extend an abstract class?",
+        "answer": "No, an interface cannot extend an abstract class. It can only extend other interfaces.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 107,
+        "question": "What is the use of the final keyword?",
+        "answer": "Final variable: value cannot change. Final method: cannot be overridden. Final class: cannot be subclassed.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 108,
+        "question": "What is a Marker Interface?",
+        "answer": "A Marker Interface is an interface with no methods or fields, used to indicate a property to the JVM (e.g., Serializable, Cloneable).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 109,
+        "question": "What is an Exception in Java?",
+        "answer": "An Exception is an event that disrupts the normal flow of the program's execution.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java",
+            "exceptions"
+        ]
+    },
+    {
+        "id": 110,
+        "question": "Difference between Checked and Unchecked Exceptions?",
+        "answer": "Checked exceptions are checked at compile-time (e.g., IOException), while Unchecked exceptions are checked at runtime (e.g., NullPointerException).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 111,
+        "question": "What is the base class of all exceptions?",
+        "answer": "Throwable is the superclass of all errors and exceptions in Java.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 112,
+        "question": "What is a collection in Java?",
+        "answer": "A collection is a framework that provides an architecture to store and manipulate a group of objects.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 113,
+        "question": "Difference between ArrayList and LinkedList?",
+        "answer": "ArrayList uses a dynamic array (faster access, slower manipulation), LinkedList uses a doubly linked list (slower access, faster manipulation).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 114,
+        "question": "Difference between HashMap and Hashtable?",
+        "answer": "HashMap is non-synchronized and allows one null key. Hashtable is synchronized and does not allow null keys or values.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 115,
+        "question": "What is strictfp?",
+        "answer": "strictfp ensures that floating-point calculations result in the same value on every platform.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 116,
+        "question": "What is the purpose of the volatile keyword?",
+        "answer": "Volatile indicates that a variable's value will be modified by different threads, ensuring visibility of changes across threads.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 117,
+        "question": "How to create a thread in Java?",
+        "answer": "By extending the Thread class or implementing the Runnable interface.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 118,
+        "question": "What is the lifecycle of a Thread?",
+        "answer": "New, Runnable, Running, Blocked/Waiting, Terminated.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 119,
+        "question": "What is the PRIMARY Key?",
+        "answer": "A Primary Key is a column or set of columns that uniquely identifies each row in a table.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 120,
+        "question": "Difference between TRUNCATE and DELETE?",
+        "answer": "DELETE removes rows one by one and logs them (can be rolled back). TRUNCATE removes all rows by deallocating pages (cannot be rolled back in some DBs, faster).",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 121,
+        "question": "What is a Foreign Key?",
+        "answer": "A Foreign Key is a field (or collection of fields) in one table that refers to the Primary Key in another table.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 122,
+        "question": "What is Normalization?",
+        "answer": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 123,
+        "question": "Explain INNER JOIN.",
+        "answer": "INNER JOIN returns records that have matching values in both tables.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 124,
+        "question": "What is Spring Boot?",
+        "answer": "Spring Boot is a framework that simplifies the development of Spring applications by providing defaults and an embedded server.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 125,
+        "question": "What is the @SpringBootApplication annotation?",
+        "answer": "It is a combination of @Configuration, @EnableAutoConfiguration, and @ComponentScan.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 126,
+        "question": "What is an IOC Container?",
+        "answer": "The IoC (Inversion of Control) container manages the lifecycle and configuration of application objects (Beans).",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 127,
+        "question": "What represents a Bean in Spring?",
+        "answer": "A Bean is an object that is instantiated, assembled, and managed by a Spring IoC container.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 128,
+        "question": "Difference between Constructor and Setter Injection?",
+        "answer": "Constructor injection is for mandatory dependencies. Setter injection is for optional dependencies.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 129,
+        "question": "Write a Java program to reverse a String.",
+        "answer": "```java\nString str = \"hello\";\nString reversed = new StringBuilder(str).reverse().toString();\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "strings"
+        ]
+    },
+    {
+        "id": 130,
+        "question": "Write a Java program to check if a number is prime.",
+        "answer": "```java\nboolean isPrime(int n) {\n if (n <= 1) return false;\n for (int i = 2; i <= Math.sqrt(n); i++) {\n if (n % i == 0) return false;\n }\n return true;\n}\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "math"
+        ]
+    },
+    {
+        "id": 131,
+        "question": "Write a program to print the Fibonacci series.",
+        "answer": "```java\nint n1=0, n2=1, n3, i, count=10;\nSystem.out.print(n1+\" \"+n2);\nfor(i=2;i<count;++i) {\n n3=n1+n2;\n System.out.print(\" \"+n3);\n n1=n2;\n n2=n3;\n}\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "math"
+        ]
+    },
+    {
+        "id": 132,
+        "question": "Write a SQL query to find the second highest salary.",
+        "answer": "```sql\nSELECT MAX(Salary) FROM Employee WHERE Salary < (SELECT MAX(Salary) FROM Employee);\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "sql"
+        ]
+    },
+    {
+        "id": 133,
+        "question": "How to swap two numbers without using a third variable?",
+        "answer": "```java\na = a + b;\na = a - b;\na = a - b;\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "math"
+        ]
+    },
+    {
+        "id": 134,
+        "question": "What is the difference between Comparable and Comparator?",
+        "answer": "Comparable provides a single natural sorting order (compareTo). Comparator provides multiple custom sorting orders (compare).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 135,
+        "question": "What is the default scope of a Spring Bean?",
+        "answer": "Singleton.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 136,
+        "question": "What is Autowiring?",
+        "answer": "Autowiring is the process by which the Spring container automatically injects dependencies.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 137,
+        "question": "What is JPQL?",
+        "answer": "Java Persistence Query Language is a platform-independent object-oriented query language defined as part of the JPA specification.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "jpa"
+        ]
+    },
+    {
+        "id": 138,
+        "question": "What is Maven?",
+        "answer": "Maven is a build automation tool used primarily for Java projects.",
+        "category": "Tools",
+        "experienceLevel": "1-3",
+        "tags": [
+            "tools"
+        ]
+    },
+    {
+        "id": 139,
+        "question": "What is Git?",
+        "answer": "Git is a distributed version control system.",
+        "category": "Tools",
+        "experienceLevel": "1-3",
+        "tags": [
+            "tools"
+        ]
+    },
+    {
+        "id": 140,
+        "question": "Why string objects are immutable in java?",
+        "answer": "Because Java uses the concept of String literal. If 5 variables refer to one string, changing it for one would change it for all.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 141,
+        "question": "What is Method Overloading?",
+        "answer": "Method overloading is having multiple methods with the same name but different parameters within the same class.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "oops"
+        ]
+    },
+    {
+        "id": 142,
+        "question": "What is Method Overriding?",
+        "answer": "Method overriding is when a subclass provides a specific implementation of a method that is already provided by its superclass.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "oops"
+        ]
+    },
+    {
+        "id": 143,
+        "question": "Can we override a static method?",
+        "answer": "No, static methods cannot be overridden, but they can be hidden.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 144,
+        "question": "What is 'this' keyword?",
+        "answer": "'this' implies a reference to the current object.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 145,
+        "question": "What is 'super' keyword?",
+        "answer": "'super' is a reference variable used to refer to the immediate parent class object.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 146,
+        "question": "What is a wrapper class?",
+        "answer": "A wrapper class converts primitive data types into objects (e.g., Integer for int).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 147,
+        "question": "What is Autoboxing and Unboxing?",
+        "answer": "Autoboxing is the automatic conversion of primitive types to wrapper objects. Unboxing is the reverse.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 148,
+        "question": "What is a package?",
+        "answer": "A package is a namespace that organizes a set of related classes and interfaces.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 149,
+        "question": "Difference between HashSet and TreeSet?",
+        "answer": "HashSet uses a hash table and is unordered. TreeSet uses a Red-Black tree and is ordered.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 150,
+        "question": "Write a program to find the factorial of a number.",
+        "answer": "```java\nint factorial(int n) {\n if (n == 0) return 1;\n return n * factorial(n-1);\n}\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "math"
+        ]
+    },
+    {
+        "id": 151,
+        "question": "What is the difference between break and continue?",
+        "answer": "Break exits the loop completely. Continue skips the current iteration and proceeds to the next one.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 152,
+        "question": "What is an infinite loop?",
+        "answer": "A loop that never terminates because the loop condition is always true.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 153,
+        "question": "What is the return type of the constructor?",
+        "answer": "A constructor does not have a return type, not even void.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 154,
+        "question": "Can we execute a catch block without a try block?",
+        "answer": "No, a catch block must always be preceded by a try block.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "exceptions"
+        ]
+    },
+    {
+        "id": 155,
+        "question": "What is the purpose of the 'default' keyword in a switch statement?",
+        "answer": "It specifies the code to run if there is no case match.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 156,
+        "question": "Can a class be static in Java?",
+        "answer": "Only nested (inner) classes can be static. Top-level classes cannot be static.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 157,
+        "question": "What is the difference between throw and throws?",
+        "answer": "Throw is used to explicitly throw an exception. Throws is used in method signature to declare exceptions.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "exceptions"
+        ]
+    },
+    {
+        "id": 158,
+        "question": "What is the underlying data structure of ArrayList?",
+        "answer": "Dynamic Array (Resizable Array).",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 159,
+        "question": "What is Serialization?",
+        "answer": "The process of converting an object into a byte stream.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "serialization"
+        ]
+    },
+    {
+        "id": 160,
+        "question": "How do you make a class Serializable?",
+        "answer": "By implementing the java.io.Serializable interface.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "serialization"
+        ]
+    },
+    {
+        "id": 161,
+        "question": "What is the transient keyword?",
+        "answer": "Transient variables are ignored during serialization.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "serialization"
+        ]
+    },
+    {
+        "id": 162,
+        "question": "What is a Daemon Thread?",
+        "answer": "A low-priority thread that runs in the background to perform tasks like garbage collection.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 163,
+        "question": "What is the join() method in Thread?",
+        "answer": "It allows one thread to wait for the completion of another.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 164,
+        "question": "What is the sleep() method?",
+        "answer": "It pauses the execution of the current thread for a specified time.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 165,
+        "question": "What is SQL?",
+        "answer": "Structured Query Language, used for managing data in relational databases.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 166,
+        "question": "What is a LEFT JOIN?",
+        "answer": "Returns all records from the left table, and the matched records from the right table.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 167,
+        "question": "What is a RIGHT JOIN?",
+        "answer": "Returns all records from the right table, and the matched records from the left table.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 168,
+        "question": "What is the ORDER BY clause?",
+        "answer": "Used to sort the result-set in ascending or descending order.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 169,
+        "question": "What is the GROUP BY statement?",
+        "answer": "Groups rows that have the same values into summary rows.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 170,
+        "question": "What is the difference between WHERE and HAVING?",
+        "answer": "WHERE filters before grouping, HAVING filters after grouping.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 171,
+        "question": "What is JDBC?",
+        "answer": "Java Database Connectivity. An API to connect Java applications to databases.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "jdbc"
+        ]
+    },
+    {
+        "id": 172,
+        "question": "What is Hibernate?",
+        "answer": "An ORM (Object Relational Mapping) tool for Java.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "hibernate"
+        ]
+    },
+    {
+        "id": 173,
+        "question": "What is Key-Value pair?",
+        "answer": "A data representation where each item has a unique key and a value.",
+        "category": "Database",
+        "experienceLevel": "1-3",
+        "tags": [
+            "concepts"
+        ]
+    },
+    {
+        "id": 174,
+        "question": "What is JSON?",
+        "answer": "JavaScript Object Notation. A text-based format for representing structured data.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "web"
+        ]
+    },
+    {
+        "id": 175,
+        "question": "What is XML?",
+        "answer": "Extensible Markup Language. A markup language used to store and transport data.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "web"
+        ]
+    },
+    {
+        "id": 176,
+        "question": "What is Spring MVC?",
+        "answer": "A module of Spring Framework for building web applications using Model-View-Controller pattern.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 177,
+        "question": "What is @Component?",
+        "answer": "A generic stereotype for any Spring-managed component.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 178,
+        "question": "What is @Service?",
+        "answer": "Annotates classes at the service layer.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 179,
+        "question": "What is @Repository?",
+        "answer": "Annotates classes at the persistence layer (DAO).",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 180,
+        "question": "What is @Autowired?",
+        "answer": "Used for automatic dependency injection.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 181,
+        "question": "What is scope 'prototype'?",
+        "answer": "A new bean instance is created every time it is requested.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 182,
+        "question": "What is application.properties?",
+        "answer": "Configuration file in Spring Boot for environment properties.",
+        "category": "Spring",
+        "experienceLevel": "1-3",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 183,
+        "question": "What is a REST API?",
+        "answer": "Representational State Transfer. An architectural style for designing networked applications.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "rest"
+        ]
+    },
+    {
+        "id": 184,
+        "question": "What are HTTP methods?",
+        "answer": "GET, POST, PUT, DELETE, PATCH, etc.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 185,
+        "question": "What is HTTP status 200?",
+        "answer": "OK. The request succeeded.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 186,
+        "question": "What is HTTP status 404?",
+        "answer": "Not Found. The server can't find the requested resource.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 187,
+        "question": "What is HTTP status 500?",
+        "answer": "Internal Server Error. The server encountered an unexpected condition.",
+        "category": "Web",
+        "experienceLevel": "1-3",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 188,
+        "question": "Write a Java program to check palindrome string.",
+        "answer": "```java\nString str = \"madam\", rev = \"\";\nfor(int i=str.length()-1;i>=0;i--) rev += str.charAt(i);\nif(str.equals(rev)) System.out.println(\"Palindrome\");\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "strings"
+        ]
+    },
+    {
+        "id": 189,
+        "question": "Write a Java program to find the largest number in an array.",
+        "answer": "```java\nint[] arr = {1, 5, 3};\nint max = arr[0];\nfor(int i=1;i<arr.length;i++) if(arr[i]>max) max=arr[i];\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 190,
+        "question": "Write a SQL query to select all columns from a table.",
+        "answer": "```sql\nSELECT * FROM table_name;\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "sql"
+        ]
+    },
+    {
+        "id": 191,
+        "question": "Write a SQL query to count rows.",
+        "answer": "```sql\nSELECT COUNT(*) FROM table_name;\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "sql"
+        ]
+    },
+    {
+        "id": 192,
+        "question": "How to sort an array in Java?",
+        "answer": "Arrays.sort(arr);",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 193,
+        "question": "What is a lambda expression?",
+        "answer": "A short block of code which takes in parameters and returns a value.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 194,
+        "question": "What is Functional Interface?",
+        "answer": "An interface that has only one abstract method.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 195,
+        "question": "What is Stream API?",
+        "answer": "Used to process collections of objects.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 196,
+        "question": "What is a Method Reference?",
+        "answer": "Shorthand syntax for a lambda expression that executes just ONE method.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 197,
+        "question": "What is Optional class?",
+        "answer": "A container object which may or may not contain a non-null value.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 198,
+        "question": "What is the use of forEach in Java 8?",
+        "answer": "Iterating over a collection.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 199,
+        "question": "What is a Constructor?",
+        "answer": "A special method used to initialize objects.",
+        "category": "Java",
+        "experienceLevel": "1-3",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 200,
+        "question": "Sum of two numbers.",
+        "answer": "```java\nint sum(int a, int b) { return a + b; }\n```",
+        "category": "Coding",
+        "experienceLevel": "1-3",
+        "tags": [
+            "coding",
+            "basic"
+        ]
+    },
+    {
+        "id": 301,
+        "question": "Explain the transient keyword.",
+        "answer": "Transient variables are not serialized during serialization.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "core-java",
+            "serialization"
+        ]
+    },
+    {
+        "id": 302,
+        "question": "What is the difference between fail-safe and fail-fast iterators?",
+        "answer": "Fail-fast throws CME if collection is modified during iteration. Fail-safe works on a clone and does not throw exception.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 303,
+        "question": "How does HashMap work internally?",
+        "answer": "HashMap works on the principle of hashing. It uses hashCode() to determine the bucket and equals() to handle collisions (using LinkedList/Tree in Java 8).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "collections",
+            "internal-working"
+        ]
+    },
+    {
+        "id": 304,
+        "question": "What is the difference between final, finally, and finalize?",
+        "answer": "final is a keyword (constant). finally is a block (exception handling). finalize is a method (garbage collection).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 305,
+        "question": "Explain ClassLoader in Java.",
+        "answer": "ClassLoader is an abstract class used to load classes at runtime. Types: Bootstrap, Extension, System.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "jvm"
+        ]
+    },
+    {
+        "id": 306,
+        "question": "What is the difference between Process and Thread?",
+        "answer": "Process is an independent execution unit with its own memory. Thread is a light-weight process sharing memory within the process.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 307,
+        "question": "What is Synchronization?",
+        "answer": "Synchronization is the capability to control the access of multiple threads to any shared resource.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 308,
+        "question": "What is a Race Condition?",
+        "answer": "A condition where multiple threads access shared data concurrently and the outcome depends on the timing of execution.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 309,
+        "question": "Difference between notify() and notifyAll().",
+        "answer": "notify() wakes up a single waiting thread. notifyAll() wakes up all waiting threads.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 310,
+        "question": "What is the key difference between Java 8 and Java 11?",
+        "answer": "Java 11 is LTS, has var keyword (local variable), Http Client API, and removal of Java EE modules.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-versions"
+        ]
+    },
+    {
+        "id": 311,
+        "question": "What are Functional Interfaces?",
+        "answer": "An interface with exactly one abstract method. Used in Lambda expressions (e.g., Runnable, Callable, Comparator).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 312,
+        "question": "Explain Reflection API.",
+        "answer": "Reflection API allows inspection and modification of the behavior of applications at runtime (classes, interfaces, fields, methods).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "reflection"
+        ]
+    },
+    {
+        "id": 313,
+        "question": "What is Filter in Servlet?",
+        "answer": "A filter is an object that is invoked at the preprocessing and postprocessing of a request.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "servlets"
+        ]
+    },
+    {
+        "id": 314,
+        "question": "What is the difference between GET and POST?",
+        "answer": "GET sends data in URL (limited, visible). POST sends data in body (unlimited, hidden, secure).",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 315,
+        "question": "What is Spring AOP?",
+        "answer": "Aspect-Oriented Programming (AOP) breaks down program logic into distinct parts called concerns (e.g., logging, security).",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring",
+            "aop"
+        ]
+    },
+    {
+        "id": 316,
+        "question": "What are Spring Boot Starters?",
+        "answer": "Starters are a set of convenient dependency descriptors to include in your application.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 317,
+        "question": "Difference between @Controller and @RestController.",
+        "answer": "@Controller is used for MVC (returns view). @RestController is @Controller + @ResponseBody (returns data/JSON).",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 318,
+        "question": "What is Singleton Design Pattern?",
+        "answer": "Ensures a class has only one instance and provides a global point of access to it. (Double-checked locking, Enum).",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns",
+            "creation"
+        ]
+    },
+    {
+        "id": 319,
+        "question": "What is Factory Design Pattern?",
+        "answer": "Defines an interface for creating an object, but let subclasses decide which class to instantiate.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns",
+            "creation"
+        ]
+    },
+    {
+        "id": 320,
+        "question": "What is Observer Design Pattern?",
+        "answer": "Defines a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns",
+            "behavioral"
+        ]
+    },
+    {
+        "id": 321,
+        "question": "What is ACID property in Database?",
+        "answer": "Atomicity, Consistency, Isolation, Durability.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 322,
+        "question": "What is Indexing? Types?",
+        "answer": "Indexing improves speed of data retrieval operation. Types: Clustered, Non-Clustered, Unique, Composite.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 323,
+        "question": "Difference between HAVING and WHERE clause?",
+        "answer": "WHERE filters rows before aggregation. HAVING filters groups after aggregation.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 324,
+        "question": "What is a Stored Procedure?",
+        "answer": "A prepared SQL code that you can save, so the code can be reused over and over again.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 325,
+        "question": "Write a SQL query to find distinct records.",
+        "answer": "```sql\nSELECT DISTINCT column_name FROM table_name;\n```",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "sql"
+        ]
+    },
+    {
+        "id": 326,
+        "question": "Reverse a Linked List in Java.",
+        "answer": "```java\nNode reverse(Node head) {\n Node prev = null, current = head, next = null;\n while (current != null) {\n next = current.next;\n current.next = prev;\n prev = current;\n current = next;\n }\n head = prev;\n return head;\n}\n```",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 327,
+        "question": "Check for balanced parentheses.",
+        "answer": "Use a Stack. Push opening brackets `(`, `{`, `[`. Pop when matching closing bracket is found. If stack is empty at end, it's balanced.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 328,
+        "question": "Find the duplicate number in an array.",
+        "answer": "Use a HashSet or sort the array. If `nums[i] == nums[i+1]`, it's duplicate.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 329,
+        "question": "Explain ThreadPoolExecutor.",
+        "answer": "It manages a pool of threads. Key params: corePoolSize, maximumPoolSize, keepAliveTime, workQueue.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 330,
+        "question": "What is Dictionary in Java?",
+        "answer": "Dictionary is an abstract class, parent of Hashtable. Replaced by Map interface.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 331,
+        "question": "Difference between path params and query params?",
+        "answer": "Path params identify a specific resource (e.g. /users/123). Query params sort/filter resources (e.g. /users?role=admin).",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "rest"
+        ]
+    },
+    {
+        "id": 332,
+        "question": "What is Circuit Breaker Pattern?",
+        "answer": "Prevents an application from repeatedly trying to execute an operation that's likely to fail.",
+        "category": "Microservices",
+        "experienceLevel": "3-5",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 333,
+        "question": "What is Service Discovery?",
+        "answer": "Automatic detection of devices and services offered by these devices on a computer network (e.g., Eureka).",
+        "category": "Microservices",
+        "experienceLevel": "3-5",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 334,
+        "question": "What is API Gateway?",
+        "answer": "An API Gateway is a server that is the single entry point into the system.",
+        "category": "Microservices",
+        "experienceLevel": "3-5",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 335,
+        "question": "What is Docker?",
+        "answer": "Docker is a platform for developing, shipping, and running applications in containers.",
+        "category": "DevOps",
+        "experienceLevel": "3-5",
+        "tags": [
+            "tools"
+        ]
+    },
+    {
+        "id": 336,
+        "question": "What is CI/CD?",
+        "answer": "Continuous Integration/Continuous Deployment. Automated steps for building, testing, and deploying logic.",
+        "category": "DevOps",
+        "experienceLevel": "3-5",
+        "tags": [
+            "tools"
+        ]
+    },
+    {
+        "id": 337,
+        "question": "What is Hibernate Caching?",
+        "answer": "First-level (Session) and Second-level (SessionFactory) caching to improve performance.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "hibernate"
+        ]
+    },
+    {
+        "id": 338,
+        "question": "Difference between Statement and PreparedStatement?",
+        "answer": "PreparedStatement is precompiled (faster) and prevents SQL Injection.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "jdbc"
+        ]
+    },
+    {
+        "id": 339,
+        "question": "What is WeakReference?",
+        "answer": "A reference that does not protect the referenced object from categorization by the garbage collector.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 340,
+        "question": "What is a Binary Search Tree?",
+        "answer": "A tree where left child < parent < right child.",
+        "category": "Data Structures",
+        "experienceLevel": "3-5",
+        "tags": [
+            "data-structures"
+        ]
+    },
+    {
+        "id": 341,
+        "question": "Find the middle element of a LinkedList.",
+        "answer": "Use two pointers: slow (move 1 step) and fast (move 2 steps). When fast reaches end, slow is at middle.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 342,
+        "question": "What is JWT?",
+        "answer": "JSON Web Token. Compact, URL-safe means of representing claims to be transferred between two parties.",
+        "category": "Security",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 343,
+        "question": "What is OAuth2?",
+        "answer": "An industry-standard protocol for authorization.",
+        "category": "Security",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 344,
+        "question": "What is CSRF?",
+        "answer": "Cross-Site Request Forgery.",
+        "category": "Security",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 345,
+        "question": "Explain Strategy Design Pattern.",
+        "answer": "Enables selecting an algorithm at runtime.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 346,
+        "question": "Explain various states of a Bean.",
+        "answer": "Does not typically have states like a thread, but lifecycle phases: Instantiation, Properties population, Initialization, Destruction.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 347,
+        "question": "What is Lazy Loading?",
+        "answer": "Loading data (e.g., related entities) only when they are requested.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "hibernate"
+        ]
+    },
+    {
+        "id": 348,
+        "question": "What is N+1 problem?",
+        "answer": "When the application executes 1 query to fetch N objects, and then N additional queries to fetch related objects for each.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "hibernate"
+        ]
+    },
+    {
+        "id": 349,
+        "question": "Detect cycle in a linked list.",
+        "answer": "Use Floyd's Cycle-Finding Algorithm (Slow and Fast pointers). If they meet, there is a cycle.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 350,
+        "question": "Implement a Queue using Stacks.",
+        "answer": "Use two stacks `s1` (input) and `s2` (output). Push to `s1`. Pop from `s2` (if empty, move all from `s1` to `s2`).",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 351,
+        "question": "What is Future and CompletableFuture?",
+        "answer": "Future represents the result of an asynchronous computation. CompletableFuture is an extension that can be manually completed and supports chaining.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 352,
+        "question": "What is Fork/Join Framework?",
+        "answer": "A framework for parallel execution of tasks by splitting them into smaller subtasks (divide and conquer).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 353,
+        "question": "Explain CopyOnWriteArrayList.",
+        "answer": "A thread-safe variant of ArrayList in which all mutative operations (add, set, etc.) are implemented by making a fresh copy of the underlying array.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 354,
+        "question": "What is ConcurrentHashMap?",
+        "answer": "A thread-safe implementation of HashMap that allows concurrent access/updates without locking the entire map (uses segments/buckets locking).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "collections"
+        ]
+    },
+    {
+        "id": 355,
+        "question": "What is BlockingQueue?",
+        "answer": "A Queue that supports operations that wait for the queue to become non-empty when retrieving an element, and wait for space to become available when storing an element.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 356,
+        "question": "What is Try-with-resources?",
+        "answer": "A try statement that declares one or more resources. The resources are closed automatically at the end of the statement.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "core-java"
+        ]
+    },
+    {
+        "id": 357,
+        "question": "What is Interface Default Method?",
+        "answer": "Methods in interfaces that have an implementation. Allows adding new methods to interfaces without breaking implementing classes.",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 358,
+        "question": "What is Spring Actuator?",
+        "answer": "Provides production-ready features like monitoring and metrics gathering for Spring Boot applications.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 359,
+        "question": "What is Spring Security?",
+        "answer": "A powerful and highly customizable authentication and access-control framework.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 360,
+        "question": "What is OAuth2 Authorization Code Grant?",
+        "answer": "A flow where the client receives an authorization code, which it exchanges for an access token.",
+        "category": "Security",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 361,
+        "question": "Explain Proxy Design Pattern.",
+        "answer": "Provides a surrogate or placeholder for another object to control access to it.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 362,
+        "question": "Explain Decorator Design Pattern.",
+        "answer": "Attaches additional responsibilities to an object dynamically.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 363,
+        "question": "Explain Adapter Design Pattern.",
+        "answer": "Allows objects with incompatible interfaces to collaborate.",
+        "category": "Design Patterns",
+        "experienceLevel": "3-5",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 364,
+        "question": "What is Horizontal vs Vertical Partitioning?",
+        "answer": "Horizontal (Sharding) splits rows. Vertical splits columns (tables).",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "database"
+        ]
+    },
+    {
+        "id": 365,
+        "question": "What are ACID properties?",
+        "answer": "Atomicity, Consistency, Isolation, Durability.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "database"
+        ]
+    },
+    {
+        "id": 366,
+        "question": "What is Dirty Read?",
+        "answer": "Reading uncommitted data from another transaction.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "database"
+        ]
+    },
+    {
+        "id": 367,
+        "question": "What is Phantom Read?",
+        "answer": "A transaction re-executes a query returning a set of rows that satisfies a search condition and finds that the set of rows satisfying the condition has changed due to another recently-committed transaction.",
+        "category": "Database",
+        "experienceLevel": "3-5",
+        "tags": [
+            "database"
+        ]
+    },
+    {
+        "id": 368,
+        "question": "What is the specialized functional interface Predicate?",
+        "answer": "Represents a boolean-valued function of one argument. test(T t).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 369,
+        "question": "What is Consumer interface?",
+        "answer": "Represents an operation that accepts a single input argument and returns no result. accept(T t).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 370,
+        "question": "What is Supplier interface?",
+        "answer": "Represents a supplier of results. get().",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 371,
+        "question": "What is Function interface?",
+        "answer": "Represents a function that accepts one argument and produces a result. apply(T t).",
+        "category": "Java",
+        "experienceLevel": "3-5",
+        "tags": [
+            "java-8"
+        ]
+    },
+    {
+        "id": 372,
+        "question": "How does Spring Boot Auto-configuration work?",
+        "answer": "It attempts to automatically configure your Spring application based on the jar dependencies that you have added.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring-boot"
+        ]
+    },
+    {
+        "id": 373,
+        "question": "What is @Qualifier?",
+        "answer": "Used to resolve ambiguity when multiple beans of the same type exist.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 374,
+        "question": "What is @Primary?",
+        "answer": "Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency.",
+        "category": "Spring",
+        "experienceLevel": "3-5",
+        "tags": [
+            "spring"
+        ]
+    },
+    {
+        "id": 375,
+        "question": "Explain Microservices Service Registry.",
+        "answer": "A database of services, their instances and their locations. Used for service discovery.",
+        "category": "Microservices",
+        "experienceLevel": "3-5",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 376,
+        "question": "What is HATEOAS?",
+        "answer": "Hypermedia as the Engine of Application State. A constraint of the REST application architecture.",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "rest"
+        ]
+    },
+    {
+        "id": 377,
+        "question": "What is Idempotent HTTP method?",
+        "answer": "A method that can be called many times without different outcomes (GET, PUT, DELETE, HEAD, OPTIONS). POST is NOT idempotent.",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "rest"
+        ]
+    },
+    {
+        "id": 378,
+        "question": "What is 301 vs 302 Redirect?",
+        "answer": "301 is Permanent Redirect. 302 is Temporary Redirect.",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "http"
+        ]
+    },
+    {
+        "id": 379,
+        "question": "What is CORS?",
+        "answer": "Cross-Origin Resource Sharing. A mechanism that uses additional HTTP headers to tell browsers to give a web application running at one origin, access to selected resources from a different origin.",
+        "category": "Web",
+        "experienceLevel": "3-5",
+        "tags": [
+            "security"
+        ]
+    },
+    {
+        "id": 380,
+        "question": "Find the length of the longest substring without repeating characters.",
+        "answer": "Use Sliding Window + HashMap/Set. Keep expanding request, if repeat found, shrink from left.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "strings"
+        ]
+    },
+    {
+        "id": 381,
+        "question": "Validate Binary Search Tree.",
+        "answer": "Recursively check if left < node < right. Pass min/max constraints down.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "trees"
+        ]
+    },
+    {
+        "id": 382,
+        "question": "Implement Level Order Traversal of BFS.",
+        "answer": "Use a Queue. Enqueue root. Loop while queue not empty: dequeue, print, enqueue children.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "trees"
+        ]
+    },
+    {
+        "id": 383,
+        "question": "Search in Rotated Sorted Array.",
+        "answer": "Modified Binary Search. Check which half is sorted, then check if target lies in that range.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 384,
+        "question": "Lowest Common Ancestor of a Binary Tree.",
+        "answer": "Recursively traverse. If node matches p or q, return node. If both left and right calls return non-null, this node is LCA.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "trees"
+        ]
+    },
+    {
+        "id": 385,
+        "question": "Longest Palindromic Substring.",
+        "answer": "Expand around center. For each char, expand left and right while match.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "strings"
+        ]
+    },
+    {
+        "id": 386,
+        "question": "Container With Most Water.",
+        "answer": "Two pointers at ends. Calculate area. Move the pointer with smaller height inward.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 387,
+        "question": "Group Anagrams.",
+        "answer": "Sort each string and use it as a key in HashMap. List of strings as value.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "strings"
+        ]
+    },
+    {
+        "id": 388,
+        "question": "Top K Frequent Elements.",
+        "answer": "Count frequencies (HashMap). Use Heap (PriorityQueue) or Bucket Sort.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "heaps"
+        ]
+    },
+    {
+        "id": 389,
+        "question": "Product of Array Except Self.",
+        "answer": "Two passes. Left product array and Right product array (or on the fly).",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 390,
+        "question": "Maximum Subarray Sum (Kadane's Algorithm).",
+        "answer": "currentMax = max(nums[i], currentMax + nums[i]); globalMax = max(globalMax, currentMax);",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 391,
+        "question": "Climbing Stairs (DP).",
+        "answer": "dp[i] = dp[i-1] + dp[i-2]. Like Fibonacci.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "dp"
+        ]
+    },
+    {
+        "id": 392,
+        "question": "Coin Change (DP).",
+        "answer": "dp[i] = min(dp[i], dp[i-coin] + 1) for each coin.",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "dp"
+        ]
+    },
+    {
+        "id": 393,
+        "question": "Number of Islands.",
+        "answer": "DFS or BFS. Iterate matrix, if '1' found, increment count and sink island (turn connected '1's to '0').",
+        "category": "Coding",
+        "experienceLevel": "3-5",
+        "tags": [
+            "coding",
+            "graphs"
+        ]
+    },
+    {
+        "id": 501,
+        "question": "What is the CAP Theorem? Explain each component.",
+        "answer": "Consistency (all nodes see same data), Availability (every request gets a response), Partition Tolerance (system continues despite message loss). You can only pick 2.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 502,
+        "question": "Explain Eventual Consistency vs Strong Consistency.",
+        "answer": "Strong: Data is instantly consistent across all nodes. Eventual: Data will become consistent over time, allowing for higher availability.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 503,
+        "question": "What is Sharding strategy?",
+        "answer": "Horizontal scaling where data is partitioned across servers. Strategies: Range, Hash, Directory-based.",
+        "category": "Database",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "scaling"
+        ]
+    },
+    {
+        "id": 504,
+        "question": "How to handle Distributed Transactions?",
+        "answer": "Two-Phase Commit (2PC), Three-Phase Commit (3PC), or Sagas (compensation-based transactions for microservices).",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 505,
+        "question": "What is a Bloom Filter?",
+        "answer": "A probabilistic data structure used to test whether an element is a member of a set. False positives are possible, false negatives are not.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "caching"
+        ]
+    },
+    {
+        "id": 506,
+        "question": "Explain Consistent Hashing.",
+        "answer": "A hashing technique that minimizes reorganization of data when nodes are added or removed. Used in load balancing and caching.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "scaling"
+        ]
+    },
+    {
+        "id": 507,
+        "question": "What is Backpressure?",
+        "answer": "A mechanism to handle the situation where the producer generates data faster than the consumer can process it.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "reactive-programming"
+        ]
+    },
+    {
+        "id": 508,
+        "question": "What is CQRS?",
+        "answer": "Command Query Responsibility Segregation. Splitting the model into two: one for updates (Commands) and one for reads (Queries).",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 509,
+        "question": "What is Event Sourcing?",
+        "answer": "Storing the state of the application as a sequence of events. State can be reconstructed by replaying events.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "design-patterns"
+        ]
+    },
+    {
+        "id": 510,
+        "question": "Difference between Monolithic, SOA, and Microservices.",
+        "answer": "Monolith: Single unit. SOA: Services communicating via ESB. Microservices: Fine-grained, independently deployable services.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 511,
+        "question": "What is TDD and BDD?",
+        "answer": "Test Driven Development (Red-Green-Refactor). Behavior Driven Development (focus on system behavior/user stories).",
+        "category": "Methodology",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "testing"
+        ]
+    },
+    {
+        "id": 512,
+        "question": "What is the 12-Factor App?",
+        "answer": "A methodology for building software-as-a-service apps (Config, Backing services, Stateless, Port binding, Disposability, Dev/prod parity, etc).",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "cloud-native"
+        ]
+    },
+    {
+        "id": 513,
+        "question": "Explain Blue-Green Deployment.",
+        "answer": "Two identical environments. One is live (Blue), one is idle (Green). Deploy to Green, test, then switch traffic.",
+        "category": "DevOps",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "deployment"
+        ]
+    },
+    {
+        "id": 514,
+        "question": "Explain Canary Deployment.",
+        "answer": "Roll out features to a small subset of users before a full rollout to reduce risk.",
+        "category": "DevOps",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "deployment"
+        ]
+    },
+    {
+        "id": 515,
+        "question": "What is Strangler Pattern?",
+        "answer": "A way to migrate a legacy system by incrementally replacing specific functionality with new applications and services.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "migration"
+        ]
+    },
+    {
+        "id": 516,
+        "question": "How to secure Microservices?",
+        "answer": "OAuth2/OIDC, Mutual TLS (mTLS), API Gateway security, JWT propagation.",
+        "category": "Security",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 517,
+        "question": "What is Sidecar Pattern?",
+        "answer": "Deploying components of an application into a separate process or container to provide isolation and encapsulation (e.g., Service Mesh proxy).",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 518,
+        "question": "What is Idempotency?",
+        "answer": "An operation that can be applied multiple times without changing the result beyond the initial application.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "api-design"
+        ]
+    },
+    {
+        "id": 519,
+        "question": "Explain Rate Limiting algorithms.",
+        "answer": "Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding Window Log, Sliding Window Counter.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "scaling"
+        ]
+    },
+    {
+        "id": 520,
+        "question": "What is Database Normalization vs Denormalization?",
+        "answer": "Normalization reduces redundancy. Denormalization adds redundancy to optimize read performance.",
+        "category": "Database",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "sql"
+        ]
+    },
+    {
+        "id": 521,
+        "question": "What is Polyglot Persistence?",
+        "answer": "Using different data storage technologies (SQL, NoSQL, Cache, Search Engine) to handle different data storage needs.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "database"
+        ]
+    },
+    {
+        "id": 522,
+        "question": "Explain Leader Election in distributed systems.",
+        "answer": "Process of designating a single process as the organizer of some task among several computers (e.g., using ZooKeeper/Etcd).",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 523,
+        "question": "What is Service Mesh?",
+        "answer": "A dedicated infrastructure layer for facilitating service-to-service communications (e.g., Istio, Linkerd).",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 524,
+        "question": "What is Chaos Engineering?",
+        "answer": "Discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions.",
+        "category": "Reliability",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "testing"
+        ]
+    },
+    {
+        "id": 525,
+        "question": "Design a URL Shortener (TinyURL).",
+        "answer": "Use a hash function (Base62) on ID. Database mapping ID -> LongURL. Handling collisions. Scaling with KGS (Key Generation Service).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "system-design"
+        ]
+    },
+    {
+        "id": 526,
+        "question": "Design a Rate Limiter.",
+        "answer": "Store counters in Redis (Atomic INCR). Middleware intercepts requests. Return 429 if limit exceeded.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "system-design"
+        ]
+    },
+    {
+        "id": 527,
+        "question": "Design a Notification System.",
+        "answer": "Queue-based architecture (Kafka/RabbitMQ). Workers for Email, SMS, Push. Retry mechanism. User preferences service.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "system-design"
+        ]
+    },
+    {
+        "id": 528,
+        "question": "Serialize and Deserialize a Binary Tree.",
+        "answer": "Use Pre-order traversal with a marker for null pointers. To deserialize, use a queue.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "trees"
+        ]
+    },
+    {
+        "id": 529,
+        "question": "Implement LRU Cache.",
+        "answer": "Use HashMap + Doubly Linked List. Map stores key -> node. List maintains order. Access moves node to head. Eviction removes from tail.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 530,
+        "question": "Find the Median of Two Sorted Arrays.",
+        "answer": "Binary Search on partitions. O(log(min(n, m))). Ensure max(left) <= min(right).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "algorithms"
+        ]
+    },
+    {
+        "id": 531,
+        "question": "What is Vertical vs Horizontal Scaling?",
+        "answer": "Vertical: Add more power (CPU, RAM) to existing machine. Horizontal: Add more machines to the pool.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "scaling"
+        ]
+    },
+    {
+        "id": 532,
+        "question": "What is CDN?",
+        "answer": "Content Delivery Network. Distributed servers that deliver web content to users based on their location.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "performance"
+        ]
+    },
+    {
+        "id": 533,
+        "question": "What is Long Polling vs WebSockets?",
+        "answer": "Long Polling: Client requests, server holds until data valid. WebSockets: Full-duplex communication channel over single TCP connection.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "communication"
+        ]
+    },
+    {
+        "id": 534,
+        "question": "Explain Gossip Protocol.",
+        "answer": "A peer-to-peer communication protocol where nodes share information about themselves and other nodes periodically.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 535,
+        "question": "What is Database Replication?",
+        "answer": "Copying data from one database server to another. Types: Master-Slave, Master-Master.",
+        "category": "Database",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "reliability"
+        ]
+    },
+    {
+        "id": 536,
+        "question": "What is Row-oriented vs Column-oriented Storage?",
+        "answer": "Row: Good for transaction processing (OLTP). Column: Good for analytical processing (OLAP, aggregations).",
+        "category": "Database",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "storage"
+        ]
+    },
+    {
+        "id": 537,
+        "question": "What is Hystrix?",
+        "answer": "A latency and fault tolerance library designed to isolate points of access to remote systems (Circuit Breaker).",
+        "category": "Tools",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 538,
+        "question": "What is Kafka?",
+        "answer": "A distributed event streaming platform capable of handling trillions of events a day. Pub/Sub model.",
+        "category": "Tools",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "messaging"
+        ]
+    },
+    {
+        "id": 539,
+        "question": "Partitioning in Kafka?",
+        "answer": "A topic is split into partitions. Partitions allow parallel processing. Order is guaranteed only within a partition.",
+        "category": "Tools",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "messaging"
+        ]
+    },
+    {
+        "id": 540,
+        "question": "What is Kubernetes (K8s)?",
+        "answer": "An open-source system for automating deployment, scaling, and management of containerized applications.",
+        "category": "DevOps",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "orchestration"
+        ]
+    },
+    {
+        "id": 541,
+        "question": "Pod vs Node in K8s?",
+        "answer": "Node is a physical/virtual machine. Pod is the smallest deployable unit, containing one or more containers.",
+        "category": "DevOps",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "kubernetes"
+        ]
+    },
+    {
+        "id": 542,
+        "question": "What is a Reverse Proxy?",
+        "answer": "A server that sits in front of web servers and forwards client requests to those web servers (e.g. Nginx).",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "networking"
+        ]
+    },
+    {
+        "id": 543,
+        "question": "What is Sticky Session?",
+        "answer": "A mechanism to route requests from a specific client to the same backend server.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "load-balancing"
+        ]
+    },
+    {
+        "id": 544,
+        "question": "What is gRPC?",
+        "answer": "A high-performance RPC framework using HTTP/2 and Protocol Buffers.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "communication"
+        ]
+    },
+    {
+        "id": 545,
+        "question": "Word Break Problem (DP).",
+        "answer": "Given string s and dictionary, determine if s can be segmented. DP[i] = true if DP[j] && diff(j, i) in dict.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "dp"
+        ]
+    },
+    {
+        "id": 546,
+        "question": "Merge k Sorted Lists.",
+        "answer": "Use a Min-Heap (PriorityQueue). Add head of all lists to heap. Poll min, add next of polled to heap.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "heaps"
+        ]
+    },
+    {
+        "id": 547,
+        "question": "Trapping Rain Water.",
+        "answer": "Two pointer approach or use logic min(maxL, maxR) - height[i].",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "arrays"
+        ]
+    },
+    {
+        "id": 548,
+        "question": "Design Top K Frequent Elements stream.",
+        "answer": "Use Count-Min Sketch for approximation or HashMap + Min-Heap for exact (if space allows).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "coding",
+            "design"
+        ]
+    },
+    {
+        "id": 549,
+        "question": "What is ThreadLocal?",
+        "answer": "Provides thread-local variables. Each thread accessing the variable has its own, independently initialized copy.",
+        "category": "Java",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "multithreading"
+        ]
+    },
+    {
+        "id": 550,
+        "question": "What are Coroutines (Kotlin/General)?",
+        "answer": "Lightweight threads. They don't block the actual thread but suspend execution, allowing the thread to do other work.",
+        "category": "Concepts",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "concurrency"
+        ]
+    },
+    {
+        "id": 551,
+        "question": "What is Distributed Tracing?",
+        "answer": "A method used to profile and monitor applications, especially those built using microservices architecture (e.g. Jaeger, Zipkin).",
+        "category": "Observability",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "microservices"
+        ]
+    },
+    {
+        "id": 552,
+        "question": "Explain Hexagonal Architecture (Ports and Adapters).",
+        "answer": "A pattern that allows an application to be equally driven by users, programs, automated test or scripts, and to be developed and tested in isolation from its runtime devices and databases.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 553,
+        "question": "What is Domain Driven Design (DDD)?",
+        "answer": "An approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 554,
+        "question": "Ubiquitous Language in DDD?",
+        "answer": "A common language used by developers and domain experts to describe the domain model.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 555,
+        "question": "Bounded Context in DDD?",
+        "answer": "A semantic boundary within which a particular domain model is defined and applicable.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "architecture"
+        ]
+    },
+    {
+        "id": 556,
+        "question": "What is RPO and RTO?",
+        "answer": "Recovery Point Objective (max acceptable data loss). Recovery Time Objective (max acceptable downtime).",
+        "category": "Reliability",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "ops"
+        ]
+    },
+    {
+        "id": 557,
+        "question": "How to design for High Availability?",
+        "answer": "Redundancy (N+1), Failover mechanisms, Load Balancing, Geographic distribution.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "availability"
+        ]
+    },
+    {
+        "id": 558,
+        "question": "What is Data Lake vs Data Warehouse?",
+        "answer": "Data Lake stores raw data (GL). Data Warehouse stores structured/processed data for analysis.",
+        "category": "Data",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "data"
+        ]
+    },
+    {
+        "id": 559,
+        "question": "What is Serverless Architecture?",
+        "answer": "A cloud execution model where the cloud provider dynamically manages the allocation and provisioning of servers (e.g., AWS Lambda).",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "cloud"
+        ]
+    },
+    {
+        "id": 560,
+        "question": "What is Cold Start in Serverless?",
+        "answer": "The delay that occurs when a serverless function is invoked for the first time or after a period of inactivity.",
+        "category": "Architecture",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "cloud"
+        ]
+    },
+    {
+        "id": 561,
+        "question": "Explain Raft Consensus Algorithm.",
+        "answer": "A consensus algorithm designed to be easy to understand. Uses Leader election and Log replication.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 562,
+        "question": "What is Paxos?",
+        "answer": "A family of protocols for solving consensus in a network of unreliable processors.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 563,
+        "question": "Design a Distributed Lock.",
+        "answer": "Use Redis (SETNX with TTL), ZooKeeper (Ephemeral nodes), or Etcd. Handle lease renewal and client failure.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 564,
+        "question": "What is Vector Clock?",
+        "answer": "An algorithm for generating a partial ordering of events in a distributed system and detecting causality violations.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 565,
+        "question": "What is Idempotency Key?",
+        "answer": "A unique key sent by the client to ensure that the server processes the request only once.",
+        "category": "API Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "api"
+        ]
+    },
+    {
+        "id": 566,
+        "question": "What is gRPC Streaming?",
+        "answer": "Allows client/server to send a stream of messages instead of a single request/response. (Unary, Server Streaming, Client Streaming, Bidirectional).",
+        "category": "Communication",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "grpc"
+        ]
+    },
+    {
+        "id": 567,
+        "question": "What is Protocol Buffers?",
+        "answer": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
+        "category": "Data",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "serialization"
+        ]
+    },
+    {
+        "id": 568,
+        "question": "What is Zero Copy?",
+        "answer": "A technique that avoids CPU data copying between memory buffers (e.g., sendfile in Linux), often used in high-performance networking like Kafka.",
+        "category": "Performance",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "performance"
+        ]
+    },
+    {
+        "id": 569,
+        "question": "What is Off-Heap Memory?",
+        "answer": "Memory allocated outside the Java Heap. Managed manually or via ByteBuffer. Reduces GC pause times but complex to manage.",
+        "category": "Performance",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "jvm"
+        ]
+    },
+    {
+        "id": 570,
+        "question": "Explain CMS vs G1 GC.",
+        "answer": "CMS (Concurrent Mark Sweep) minimizes pauses but causes fragmentation. G1 (Garbage First) divides heap into regions and prioritizes garbage-filled regions.",
+        "category": "Performance",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "jvm"
+        ]
+    },
+    {
+        "id": 571,
+        "question": "What is ZGC?",
+        "answer": "Z Garbage Collector. Scalable low-latency GC. Pauses do not increase with heap size (sub-millisecond pauses).",
+        "category": "Performance",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "jvm"
+        ]
+    },
+    {
+        "id": 572,
+        "question": "What is Thread Dump Analysis?",
+        "answer": "Analyzing the state of all threads to diagnose deadlocks, contention, or high CPU usage.",
+        "category": "Troubleshooting",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "debugging"
+        ]
+    },
+    {
+        "id": 573,
+        "question": "What is Heap Dump Analysis?",
+        "answer": "Snapshot of memory at a point in time. Used to debug OutOfMemoryError and memory leaks.",
+        "category": "Troubleshooting",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "debugging"
+        ]
+    },
+    {
+        "id": 574,
+        "question": "Design a Distributed Counter.",
+        "answer": "Use Compare-and-Swap (CAS) or CRDTs (Conflict-free Replicated Data Types) like G-Counter/PN-Counter.",
+        "category": "System Design",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 575,
+        "question": "Design a Search Autocomplete System.",
+        "answer": "Use Trie data structure. Scale with sharding by prefix. Cache top queries. Use Type-ahead search.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "system-design"
+        ]
+    },
+    {
+        "id": 576,
+        "question": "Design a Web Crawler.",
+        "answer": "Seed URLs -> URL Frontier (Queue) -> Fetcher -> DNS Resolver -> Content Parser -> Dedup -> Storage.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "system-design"
+        ]
+    },
+    {
+        "id": 577,
+        "question": "Implement Dijkstra's Algorithm.",
+        "answer": "Shortest path in weighted graph. Use PriorityQueue to store (distance, node). Relax edges.",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "algorithms"
+        ]
+    },
+    {
+        "id": 578,
+        "question": "Implement A* Search Algorithm.",
+        "answer": "Pathfinding using heuristic function h(n). f(n) = g(n) + h(n).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "algorithms"
+        ]
+    },
+    {
+        "id": 579,
+        "question": "Segment Tree Implementation.",
+        "answer": "Tree used for storing information about intervals or segments (e.g., sum, min/max in range) in O(log n).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "data-structures"
+        ]
+    },
+    {
+        "id": 580,
+        "question": "Union Find (Disjoint Set) with Path Compression.",
+        "answer": "Algorithm to track elements partitioned into disjoint sets. Operations: find(x), union(x, y).",
+        "category": "Coding",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "algorithms"
+        ]
+    },
+    {
+        "id": 581,
+        "question": "What is Memory Leak in Java?",
+        "answer": "Objects are no longer used but are still referenced, preventing GC from reclaiming memory.",
+        "category": "Performance",
+        "experienceLevel": "5-8+",
+        "tags": [
+            "debugging"
+        ]
     }
 ]
