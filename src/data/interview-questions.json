@@ -8,7 +8,8 @@
         "tags": [
             "core-java",
             "recently-asked"
-        ]
+        ],
+        "detailedSolution": "### Comparison\n- **`==` Operator:**\n    - Checks reference equality (address in memory) for objects.\n    - Checks value equality for primitives (int, char, etc.).\n    - Example: `s1 == s2` is true only if they point to the exact same object.\n\n- **`.equals()` Method:**\n    - Defined in `Object` class. Default implementation uses `==`.\n    - Classes override it to check for logical equality (content).\n    - Example: `String` overrides it to compare character sequence. `Integer` compares int value.\n    - *Contract:* If `a.equals(b)` is true, then `a.hashCode()` must be same as `b.hashCode()`.\n"
     },
     {
         "id": 2,
@@ -18,7 +19,8 @@
         "experienceLevel": "1-3",
         "tags": [
             "core-java"
-        ]
+        ],
+        "detailedSolution": "### How it works\n1.  **Internal Storage:** String stores characters in a `private final byte[] value` (Java 9+) or `char[]` (older).\n2.  **No Setters:** The class provides no methods to modify the value.\n3.  **Final Class:** `String` class is `final`, so it cannot be subclassed to override behavior.\n4.  **String Pool:** JVM maintains a special memory area for String literals to save memory. Immutability is required for the pool to function safely (sharing references).\n"
     },
     {
         "id": 3,
@@ -29,7 +31,8 @@
         "tags": [
             "design-patterns",
             "recently-asked"
-        ]
+        ],
+        "detailedSolution": "### The 5 Principles\n1.  **Single Responsibility Principle (SRP):** A class should have only one reason to change.\n2.  **Open/Closed Principle (OCP):** Software entities should be open for extension but closed for modification.\n3.  **Liskov Substitution Principle (LSP):** Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.\n4.  **Interface Segregation Principle (ISP):** Clients should not be forced to implement interfaces they don't use. Split large interfaces into smaller ones.\n5.  **Dependency Inversion Principle (DIP):** High-level modules should not depend on low-level modules. Both should depend on abstractions.\n"
     },
     {
         "id": 4,
@@ -51,7 +54,8 @@
         "tags": [
             "jvm",
             "recently-asked"
-        ]
+        ],
+        "detailedSolution": "### How GC Works\n1.  **Mark:** GC identifies which objects are still in use (reachable from GC Roots: active threads, static variables, local vars).\n2.  **Sweep:** GC removes objects that are not marked.\n3.  **Compact:** (Optional) Moves surviving objects to contiguous memory to reduce fragmentation.\n\n### Generations\n- **Young Generation:** Where new objects are allocated (Eden space). Minor GC happens here. Fast.\n- **Old Generation:** Objects that survived simplified GCs in Young Gen are moved here. Major GC. Slower.\n- **Permanent Gen / Metaspace:** Stores metadata about classes and methods.\n"
     },
     {
         "id": 6,
@@ -62,7 +66,8 @@
         "tags": [
             "distributed-systems",
             "recently-asked"
-        ]
+        ],
+        "detailedSolution": "### CAP Theorem Explained\nThe CAP theorem states that a distributed data store can effectively provide only two of the following three guarantees:\n1.  **Consistency (C):** Every read receives the most recent write or an error.\n2.  **Availability (A):** Every request receives a (non-error) response, without the guarantee that it contains the most recent write.\n3.  **Partition Tolerance (P):** The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes.\n\n### Trade-offs\n- **CP (Consistency + Partition Tolerance):** Wait for response from the partitioned node. System might time out. Good for banking. (e.g., MongoDB, HBase)\n- **AP (Availability + Partition Tolerance):** Return the most recent version of data available, which might be stale. Good for social media feeds. (e.g., Cassandra, DynamoDB)\n- **CA (Consistency + Availability):** Not possible in distributed systems as network partitions are inevitable.\n"
     },
     {
         "id": 7,
@@ -73,7 +78,8 @@
         "tags": [
             "database",
             "scaling"
-        ]
+        ],
+        "detailedSolution": "### Sharding Strategies\n1.  **Key Based Sharding (Hash):** `shard_id = hash(key) % total_shards`. Uniform distribution but adding/removing nodes causes rebalancing (requires Consistent Hashing).\n2.  **Range Based Sharding:** Shard based on range of values (e.g., User ID 1-1000). Easy to implement but can lead to \"hot spots\" if one range is more active.\n3.  **Directory Based Sharding:** Lookup table holding location of each key. Flexible but the lookup table becomes a single point of failure/bottleneck.\n\n### Pros & Cons\n- **Pros:** Horizontal scaling, reduced index size, improved performance.\n- **Cons:** Complex queries (joins across shards are hard), data rebalancing is difficult, no native transaction support across shards.\n"
     },
     {
         "id": 8,
@@ -83,7 +89,8 @@
         "experienceLevel": "3-5",
         "tags": [
             "multithreading"
-        ]
+        ],
+        "detailedSolution": "### Conditions for Deadlock\n1.  **Mutual Exclusion:** Resources cannot be shared.\n2.  **Hold and Wait:** A process holding a resource is waiting for another.\n3.  **No Preemption:** Resources cannot be forcibly taken away.\n4.  **Circular Wait:** A waits for B, B waits for C, C waits for A.\n\n### Prevention\n- **Avoid Circular Wait:** Lock resources in a strict order (e.g., always lock Account A before Account B).\n- **Lock Timeout:** Use `tryLock(timeout)` instead of infinite wait.\n- **Deadlock Detection:** Run a background thread to detect cycles and abort one transaction.\n"
     },
     {
         "id": 9,
@@ -116,7 +123,8 @@
         "tags": [
             "microservices",
             "architecture"
-        ]
+        ],
+        "detailedSolution": "### 2-Phase Commit (2PC)\n- **Coordinator** asks all participants if they can commit. If all say \"yes\", it sends \"commit\". If any say \"no\", it sends \"rollback\".\n- **Drawback:** Blocking protocol. If coordinator fails, participants are locked. Not scalable.\n\n### Saga Pattern\n- **Choreography:** Services emit events. Other services listen and react. Decentralized. Hard to track.\n- **Orchestration:** a central Orchestrator tells services what to do. Centralized control. Easier to manage state.\n- **Compensation:** Since there is no rollback, if a step fails, you must execute a \"compensating transaction\" to undo previous steps (e.g., \"refund payment\" if \"ship item\" fails).\n"
     },
     {
         "id": 12,
@@ -127,7 +135,8 @@
         "tags": [
             "database",
             "sql"
-        ]
+        ],
+        "detailedSolution": "### Comparison\n| Feature | String | StringBuffer | StringBuilder |\n| :--- | :--- | :--- | :--- |\n| **Immutability** | Immutable | Mutable | Mutable |\n| **Thread Safety** | Thread-safe (inherently) | Thread-safe (synchronized methods) | Not Thread-safe |\n| **Performance** | Slow (creates new object for every concat) | Slower than Builder (synch overhead) | Fastest |\n| **Usage** | Constants, Keys, Parameters | Multithreaded string manipulation | Single-threaded string manipulation (most common) |\n"
     },
     {
         "id": 101,
@@ -259,7 +268,8 @@
         "experienceLevel": "1-3",
         "tags": [
             "collections"
-        ]
+        ],
+        "detailedSolution": "### Comparison Table\n| Feature | ArrayList | LinkedList |\n| :--- | :--- | :--- |\n| **Underlying Data Structure** | Resizable Array | Doubly Linked List |\n| **Access (get)** | O(1) - Random Access | O(n) - Sequential Access |\n| **Insert/Delete (middle)** | O(n) - Requires shifting | O(1) - Only pointer change (if node known) |\n| **Memory Overhead** | Low (just array) | High (node object + next/prev pointers) |\n| **Data Locality** | High (contiguous memory, cache friendly) | Low (scattered memory) |\n\n### When to use\n- **ArrayList:** Read-heavy, frequent access by index.\n- **LinkedList:** Write-heavy (specifically adding/removing from start/middle), implementing Stacks/Queues.\n"
     },
     {
         "id": 114,
@@ -399,7 +409,8 @@
         "experienceLevel": "1-3",
         "tags": [
             "spring"
-        ]
+        ],
+        "detailedSolution": "### Algorithm (Sum Formula)\n1.  Calculate expected sum of 1 to N: `total = N * (N + 1) / 2`.\n2.  Calculate actual sum of elements in array.\n3.  `Missing Number = Expected Sum - Actual Sum`.\n4.  **Complexity:** Time O(n), Space O(1).\n5.  **Overflow Risk:** If N is large, sum might overflow. XOR approach avoids this.\n\n### Approach 2 (XOR)\n- `XOR` all numbers from 1 to N.\n- `XOR` all elements in array.\n- `XOR` of results gives missing number. (Since `A ^ A = 0` and `A ^ 0 = A`).\n"
     },
     {
         "id": 128,
@@ -445,7 +456,7 @@
             "coding",
             "math"
         ],
-        "detailedSolution": "### Approaches\n1.  **Recursive:** `fib(n) = fib(n-1) + fib(n-2)`. O(2^n) exponential time. Bad.\n2.  **Iterative:** simple loop. O(n).\n3.  **Dynamic Programming (Memoization):** Store results in array. O(n).\n\n### Code (Iterative)\n```java\nvoid printFib(int count) {\n    int n1 = 0, n2 = 1, n3;\n    System.out.print(n1 + \" \" + n2);\n    for (int i = 2; i < count; ++i) {\n        n3 = n1 + n2;\n        System.out.print(\" \" + n3);\n        n1 = n2;\n        n2 = n3;\n    }\n}\n```\n"
+        "detailedSolution": "### Approaches\n1.  **Reverse String:** `str.equals(new StringBuilder(str).reverse().toString())`. Simple but O(n) space.\n2.  **Two Pointers (Optimal):**\n    - Pointer `left` at 0, `right` at length-1.\n    - Loop while `left < right`.\n    - Compare `str.charAt(left)` with `str.charAt(right)`.\n    - If mismatch -> Not palindrome.\n    - Else `left++`, `right--`.\n    - **Complexity:** Time O(n/2), Space O(1).\n"
     },
     {
         "id": 132,
@@ -539,7 +550,8 @@
         "experienceLevel": "1-3",
         "tags": [
             "core-java"
-        ]
+        ],
+        "detailedSolution": "### Why Immutable?\n1.  **Security:** Strings are used for params like network connections, db URLs, usernames. Passing mutable strings could allow malicious modification.\n2.  **Synchronization:** Immutable objects are automatically thread-safe.\n3.  **Caching (String Pool):** If strings were mutable, we couldn't reuse the same instance for literals \"Hello\" in different parts of code.\n4.  **Hashcode Caching:** Since content doesn't change, hashcode is calculated once and cached. Key for HashMap performance.\n"
     },
     {
         "id": 141,

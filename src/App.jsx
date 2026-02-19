@@ -8,6 +8,7 @@ const TopicPage = lazy(() => import('./pages/TopicPage'));
 const ConceptsPage = lazy(() => import('./pages/ConceptsPage'));
 const InterviewQuestionsPage = lazy(() => import('./pages/InterviewQuestionsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CompilerPage = lazy(() => import('./pages/CompilerPage'));
 
 const Loading = () => (
   <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: 'white' }}>
@@ -35,6 +36,7 @@ function App() {
               <Route path="/concepts" element={<ConceptsPage />} />
               <Route path="/interview-questions" element={<InterviewQuestionsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/compiler" element={<CompilerPage />} />
             </Routes>
           </Suspense>
         </main>

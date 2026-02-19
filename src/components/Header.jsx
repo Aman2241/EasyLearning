@@ -42,6 +42,12 @@ const Header = () => {
                     >
                         Contact
                     </Link>
+                    <Link
+                        to="/compiler"
+                        className={`nav-link ${isActive('/compiler') ? 'active' : ''}`}
+                    >
+                        Compiler
+                    </Link>
                 </nav>
             </div>
         </header>
