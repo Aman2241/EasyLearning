@@ -39,7 +39,8 @@
         "experienceLevel": "3-5",
         "tags": [
             "architecture"
-        ]
+        ],
+        "detailedSolution": "### Monolithic Architecture\n- **Single Unit:** All components (UI, Business Logic, DB access) are bundled together.\n- **Pros:** Simple to develop/test/deploy initially.\n- **Cons:** Hard to scale individual components. A single bug can bring down the whole app. Tight coupling.\n\n### Microservices Architecture\n- **Collection of Services:** App is broken down into small, independent services communicating via APIs (HTTP/REST/gRPC).\n- **Pros:** Scalability (scale only what's needed), Technology Diversity (polyglot), Fault Isolation.\n- **Cons:** Distributed system complexity (network latency, data consistency, monitoring).\n"
     },
     {
         "id": 5,
@@ -419,7 +420,8 @@
         "tags": [
             "coding",
             "strings"
-        ]
+        ],
+        "detailedSolution": "### Approaches\n1.  **StringBuilder:** Use the built-in `reverse()` method. Efficient and simple.\n2.  **Char Array:** Convert string to char array, swap start and end indices until they meet.\n3.  **Recursive:** `reverse(str.substring(1)) + str.charAt(0)`. Not recommended for deep recursion.\n\n### Code Implementation (Two Pointers)\n```java\npublic static String reverse(String str) {\n    char[] chars = str.toCharArray();\n    int left = 0, right = chars.length - 1;\n    while (left < right) {\n        char temp = chars[left];\n        chars[left] = chars[right];\n        chars[right] = temp;\n        left++;\n        right--;\n    }\n    return new String(chars);\n}\n```\n"
     },
     {
         "id": 130,
@@ -430,7 +432,8 @@
         "tags": [
             "coding",
             "math"
-        ]
+        ],
+        "detailedSolution": "### Logic\nA prime number is a number greater than 1 that has no divisors other than 1 and itself.\n- ** brute force:** Check from 2 to n-1. O(n).\n- ** optimized:** Check from 2 to sqrt(n). If n has a factor larger than sqrt(n), the other factor must be smaller than sqrt(n). O(sqrt(n)).\n\n### Code\n```java\nboolean isPrime(int n) {\n    if (n <= 1) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n```\n"
     },
     {
         "id": 131,
@@ -441,7 +444,8 @@
         "tags": [
             "coding",
             "math"
-        ]
+        ],
+        "detailedSolution": "### Approaches\n1.  **Recursive:** `fib(n) = fib(n-1) + fib(n-2)`. O(2^n) exponential time. Bad.\n2.  **Iterative:** simple loop. O(n).\n3.  **Dynamic Programming (Memoization):** Store results in array. O(n).\n\n### Code (Iterative)\n```java\nvoid printFib(int count) {\n    int n1 = 0, n2 = 1, n3;\n    System.out.print(n1 + \" \" + n2);\n    for (int i = 2; i < count; ++i) {\n        n3 = n1 + n2;\n        System.out.print(\" \" + n3);\n        n1 = n2;\n        n2 = n3;\n    }\n}\n```\n"
     },
     {
         "id": 132,
@@ -452,7 +456,8 @@
         "tags": [
             "coding",
             "sql"
-        ]
+        ],
+        "detailedSolution": "### SQL Query Approaches\n1.  **Subquery:**\n    ```sql\n    SELECT MAX(Salary) FROM Employee \n    WHERE Salary < (SELECT MAX(Salary) FROM Employee);\n    ```\n2.  **Limit/Offset (MySQL/Postgres):**\n    ```sql\n    SELECT Salary FROM Employee \n    ORDER BY Salary DESC \n    LIMIT 1 OFFSET 1;\n    ```\n3.  **Dense Rank:**\n    ```sql\n    WITH Ranked AS (\n        SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) as rank\n        FROM Employee\n    )\n    SELECT Salary FROM Ranked WHERE rank = 2;\n    ```\n"
     },
     {
         "id": 133,
@@ -463,7 +468,8 @@
         "tags": [
             "coding",
             "math"
-        ]
+        ],
+        "detailedSolution": "### Math Logic\nUsing Addition and Subtraction:\n1. `a = a + b` (a becomes sum)\n2. `b = a - b` (b becomes original a)\n3. `a = a - b` (a becomes original b)\n\n### Code\n```java\nint a = 10, b = 20;\na = a + b; // a = 30\nb = a - b; // b = 10\na = a - b; // a = 20\n```\n*Note: Be careful of integer overflow.*\n"
     },
     {
         "id": 134,
@@ -2915,5 +2921,641 @@
         "tags": [
             "debugging"
         ]
+    },
+    {
+        "id": 601,
+        "question": "Design a URL Shortener (TinyURL)",
+        "answer": "A service to convert long URLs into short aliases.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Requirements\n\n1.  **Functional:**\n    *   Given a long URL, return a unique short URL.\n    *   Given a short URL, redirect to the original long URL.\n    *   Users can optionally pick a custom alias for their URL.\n    *   Links expire after a standard default timespan.\n\n2.  **Non-Functional:**\n    *   Highly available.\n    *   Real-time URL redirection with minimal latency.\n    *   Shortened links should not be guessable (predictable).\n\n### High Level Design\n\n1.  **Clients:** Web browsers or mobile apps.\n2.  **Load Balancer:** Distributes incoming traffic.\n3.  **Web Server:** Application logic to handle shortening and redirection.\n4.  **Database:** Stores the mapping of ShortURL <-> LongURL.\n5.  **Key Generation Service (KGS):** Pre-generates unique keys to ensure no collisions and fast insertion.\n\n### Database Schema\n\n- **URL Table:**\n    - `Hash (PK): varchar(10)`\n    - `OriginalURL: varchar(512)`\n    - `CreationDate: datetime`\n    - `ExpirationDate: datetime`\n    - `UserID: int`\n\n### Logic\n\n- **Encoding:** Base62 encoding (A-Z, a-z, 0-9) is commonly used. With 7 characters, we have 62^7 = ~3.5 trillion combinations.\n- **KGS:** A standalone service that generates random 6-letter strings and stores them in a database (or keeps them in memory). When the web server needs a key, it takes one from the KGS. This avoids runtime collision checks.",
+        "diagram": "Client <--> Load Balancer <--> Web Servers <--> Database (Mapping)\n                                    ^\n                                    |\n                                   KGS (Key Gen Service) <--> Key DB"
+    },
+    {
+        "id": 602,
+        "question": "Design Instagram (Photo Sharing Service)",
+        "answer": "A social networking service for sharing photos and videos.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Requirements\n1.  **Functional:** Upload photos, view news feed, follow users, like/comment.\n2.  **Non-Functional:** High availability, low latency for feed generation, high reliability for storage.\n\n### Architecture\n1.  **Storage:** Need object storage (S3) for photos and a database (SQL/NoSQL) for metadata.\n2.  **CDN:** To serve static content (photos/videos) quickly globally.\n3.  **Feed Generation:** \n    - **Pull Model:** Fetch feeds on demand (slow for user).\n    - **Push Model:** Pre-generate feeds for active users (fan-out on write). Hybrid approach usually best.\n\n### Component Breakdown\n- **Image Hosting:** AWS S3 or Google Cloud Storage.\n- **Metadata DB:** Sharded MySQL or Cassandra (User, Photo, Follow tables).\n- **Redis:** Caching user feeds and hot data.\n",
+        "diagram": "Client --> Load Balancer --> App Servers --> Metadata DB (Sharded)\n                                    |\n                                    +--> Object Storage (S3) --> CDN\n                                    |\n                                    +--> Redis (Feed Cache)"
+    },
+    {
+        "id": 603,
+        "question": "Design a Chat Application (WhatsApp/Facebook Messenger)",
+        "answer": "A real-time messaging application.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Key Concepts\n- **Real-time:** Use WebSockets for bi-directional communication.\n- **Status:** Online/Offline indicators using a heartbeat mechanism or dedicated Presence Service.\n- **Message Storage:** Chat history needs to be stored. HBase or Cassandra are good choices due to high write throughput and range queries (chat history).\n\n### Connection Handling\nSince WebSockets are stateful, a specific server holds the connection. If User A wants to send to User B:\n1.  User A sends msg to Server 1.\n2.  Server 1 checks where User B is connected (via Redis/Zookeeper).\n3.  Server 1 forwards msg to Server 2 (where User B is).\n4.  Server 2 pushes msg to User B.\n",
+        "diagram": "User A --(WebSocket)--> Chat Server 1 --+--> Message DB (Cassandra)\n                                        |\n                                     Redis (User Session Map)\n                                        |\nUser B <--(WebSocket)-- Chat Server 2 --+"
+    },
+    {
+        "id": 604,
+        "question": "Design a Rate Limiter",
+        "answer": "A service to control the rate of traffic sent by a client or service.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Algorithms\n1.  **Token Bucket:** Tokens are added at a constant rate. Request consumes a token. If no token, request dropped.\n2.  **Leaky Bucket:** Requests enter a queue and are processed at a constant rate. If queue full, drop.\n3.  **Fixed Window Counter:** Count requests in a fixed time window (e.g., 1 min). Reset at end of window.\n4.  **Sliding Window Log:** Keep timestamps of all requests. precise but high memory.\n5.  **Sliding Window Counter:** Hybrid of Fixed Window and Log.\n\n### Implementation\n- Use **Redis** to store counters/tokens because it's fast and supports atomic operations (INCR, EXPIRE).\n- Creating a middleware or a standalone service (API Gateway sidecar).\n",
+        "diagram": "Client --> API Gateway (Rate Limiter Middleware) --> Service\n                      |\n                    Redis (Counters)"
+    },
+    {
+        "id": 605,
+        "question": "Design a Key-Value Store (like Redis or DynamoDB)",
+        "answer": "A distributed storage system for key-value pairs.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Core Components\n1.  **Partitioning:** Consistent Hashing to distribute data across nodes.\n2.  **Replication:** Master-Slave or Master-Master replication or Quorum-based (N, R, W) for reliability.\n3.  **Consistency:** Tunable consistency (CAP theorem trade-offs). Dynamo uses Vector Clocks for versioning.\n4.  **Gossip Protocol:** For cluster membership and failure detection.\n5.  **Storage Engine:** LSM Trees (Log Structured Merge Trees) for write-heavy, B-Trees for read-heavy.\n\n### Operations\n- **put(key, value):** Hash key -> Find Node -> Write to WAL (Write Ahead Log) -> Update MemTable.\n- **get(key):** Hash key -> Find Node -> Check MemTable -> Check Bloom Filter -> Check SSTables.\n",
+        "diagram": "Client --> Load Balancer --> Node A (Coordinator)\n                                |\n             +------------------+------------------+\n             |                  |                  |\n           Node B             Node C             Node D\n      (Consistent Hashing Ring with Replication)"
+    },
+    {
+        "id": 606,
+        "question": "Design a Notification System",
+        "answer": "A system to send notifications (Email, SMS, Push) to users.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Architecture\n1.  **Notification Service:** API entry point.\n2.  **User Preferences:** Stores how user wants to be notified (opt-in/out).\n3.  **Message Queue:** Decouples the request from processing. Allows retries and buffering.\n4.  **Workers:** Consume from queue and call 3rd party providers (SendGrid, Twilio, APNS/FCM).\n5.  **Rate Limiting:** Protect 3rd party quotas.\n",
+        "diagram": "Service/Client --> Notification API --> Message Queue (Kafka/RabbitMQ)\n                                              |\n                                              v\n                                           Workers\n                                              |\n                            +-------------+-------------+-------------+\n                            |             |             |\n                         Email (SES)     SMS (Twilio)  Push (FCM)"
+    },
+    {
+        "id": 607,
+        "question": "Design Top K Frequent Elements (Heavy Hitters)",
+        "answer": "Find the K most frequent items in a large data stream.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Approaches\n1.  **Exact (HashMap):** Keep count of all items. Space O(N). Not scalable for massive streams.\n2.  **Approximate (Count-Min Sketch):** Uses multiple hash functions and arrays to estimate frequency. Space O(width * depth). Guaranteed not to undercount.\n3.  **Data Processing Pipeline:**\n    - **Fast Path:** Aggregate in memory at ingestion/load balancer level for short window.\n    - **Slow Path:** MapReduce job to aggregate logs periodically.\n",
+        "diagram": "Data Stream --> Ingestion Service --> Kafka\n                                       |\n                   +-------------------+-------------------+\n                   |                                       |\n              Real-time (Storm/Flink)                 Batch (Hadoop/Spark)\n              (Count-Min Sketch)                      (Exact MapReduce)\n                   |                                       |\n                   +----> Merge/Result DB <----------------+"
+    },
+    {
+        "id": 608,
+        "question": "Design Youtube/Netflix (Video Streaming)",
+        "answer": "A system to upload, process, and stream videos.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Workflow\n1.  **Upload:** User uploads raw video.\n2.  **Processing (Encoding):** Split video into chunks (GOP). Transcode into different formats (HLS/DASH) and resolutions (360p, 720p, 1080p).\n3.  **Storage:** Store chunks in Blob storage (S3).\n4.  **CDN:** Push popular content to Edge locations.\n5.  **Playback:** Adaptive Bitrate Streaming (ABR) selects quality based on user bandwidth.\n\n### Key Tech\n- **Protocols:** HLS (Apple), DASH.\n- **Storage:** Distributed File System / Object Storage.\n",
+        "diagram": "User (Upload) --> Load Balancer --> Source Storage (S3)\n                                         |\n                                    Transcoder Service (Workers)\n                                         |\n                                    Processed Bucket (S3)\n                                         |\n                                        CDN\n                                         |\nUser (Watch) <---------------------------+"
+    },
+    {
+        "id": 609,
+        "question": "Design Google Drive/Dropbox",
+        "answer": "A file storage and synchronization service.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Features\n- Upload/Download files.\n- Sync across devices.\n- File versioning.\n\n### Architecture\n1.  **Block Server:** Splits files into small blocks (e.g., 4MB). Only modified blocks are uploaded (Differential Sync). Dedup blocks (if multiple users upload same file).\n2.  **Metadata DB:** Relational DB to store file hierarchy, permissions, and mapping of FileID -> List<BlockID>.\n3.  **Sync Service:** Notifies clients of changes (Long Polling/WebSockets).\n4.  **S3:** Stores the actual data blocks.\n",
+        "diagram": "Client App  -->  Block Server  -->  Block Storage (S3)\n     |               |\n     +------------>  Metadata DB\n     |               |\n     +------------>  Sync Service (Notification)"
+    },
+    {
+        "id": 610,
+        "question": "Design a Distributed Search (Elasticsearch)",
+        "answer": "A distributed, RESTful search and analytics engine.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Core Concepts\n- **Inverted Index:** Maps words -> Document IDs. (The core of Lucene).\n- **Sharding:** Index is split into shards. Distributed across nodes.\n- **Replication:** Each shard has replicas for HA.\n\n### Request Flow\n1.  Client sends search query to Coordinator Node.\n2.  Coordinator broadcasts query to all Shards (Scatter).\n3.  Each Shard executes query locally and returns partial results (Score, DocID).\n4.  Coordinator merges results, fetches full documents (Gather), and returns to client.\n",
+        "diagram": "Client --> Coordinator Node\n                |\n      +---------+---------+\n      |         |         |\n   Shard 1    Shard 2   Shard 3\n(Inverted Idx) (Inv Idx) (Inv Idx)"
+    },
+    {
+        "id": 611,
+        "question": "Design Twitter Search",
+        "answer": "Real-time search engine for tweets.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Challenges\n- Real-time ingestion (tweets are searchable immediately).\n- Massive volume.\n\n### Architecture\n1.  **Ingestion:** Tweets enter via Kafka.\n2.  **Indexer:** Workers read Kafka and built Inverted Index.\n3.  **Storage:** Indicies stored in memory (Earlybird) for recent tweets, and on disk for older ones.\n4.  **Query:** Scatter-Gather logic similar to standard search engine, but optimized for recency.\n",
+        "diagram": "Tweet --> Kafka --> Ingester --> In-Memory Index (Redis/Custom)\n                                       |\n                                    Persistent Storage (HDFS/Cassandra)"
+    },
+    {
+        "id": 612,
+        "question": "Design Typeahead Suggestion (Google Search)",
+        "answer": "Autocomplete suggestions based on query prefix.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Data Structure\n- **Trie:** Efficient for prefix lookups.\n- For each node, store top 5-10 hot queries to avoid traversing full subtree.\n\n### Optimization\n- **Client:** Debounce keystrokes (wait 300ms). Cache results locally.\n- **Server:** Sampling (log every Nth query). Offline updates of the Trie (MapReduce) vs Online updates.\n- **Sharding:** Shard Trie based on prefix (a-c, d-f...).\n",
+        "diagram": "Client --> Load Balancer --> Autocomplete Service --> Trie Cache (Redis)\n                                                      |\n                                                  Trie Builder (Batch Job)"
+    },
+    {
+        "id": 613,
+        "question": "Design a Web Crawler",
+        "answer": "A bot that systematically browses the World Wide Web.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Components\n1.  **Seed URLs:** Starting point.\n2.  **URL Frontier:** Prioritized Queue of URLs to crawl.\n3.  **Fetcher:** Downloads the HTML.\n4.  **DNS Resolver:** Caches IP addresses to be polite.\n5.  **Content Parser:** Validates and extracts links.\n6.  **Dedup:** Checks signature/fingerprint to avoid storing duplicates.\n7.  **Storage:** Stores content (BigTable) and Metadata.\n",
+        "diagram": "URL Frontier --> Fetcher --> HTML Parser --> Dedup Check --> Storage\n      ^                                           |\n      |                                           |\n      +-------------------< (New Links) <---------+"
+    },
+    {
+        "id": 614,
+        "question": "Design API Rate Limiter (Throttling)",
+        "answer": "Control the consumption of resources used by an API consumer.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "Same as generic rate limiter but specifically for APIs.\n- **Where:** Middleware, API Gateway (Kong, Nginx).\n- **Granularity:** Per User, Per IP, Per Endpoint.\n- **Return:** HTTP 429 Too Many Requests with `Retry-After` header.\n- **Distributed:** Use Redis Lua scripts for atomic decrement.",
+        "diagram": "User Request --> Load Balancer --> API Gateway (Rate Check) --> Backend\n                                       |\n                                     Redis"
+    },
+    {
+        "id": 615,
+        "question": "Design Ticketmaster (Booking System)",
+        "answer": "A ticket sales and distribution company.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Constraints\n- Consistency is key. Cannot sell same seat twice.\n- High concurrency during popular event launches.\n\n### Mechanism\n1.  **Reservation:** When user selects seat, hold it for 5-10 mins. (Set status = 'Reserved' with TTL).\n2.  **Purchase:** If payment success, status = 'Booked'. If TTL expires/fail, status = 'Open'.\n3.  **Database:** SQL (ACID) is preferred for inventory management to ensure consistency.\n",
+        "diagram": "Client --> Booking Service --> Inventory DB (SQL)\n                                    |\n                               Lock/Reserve Logic\n                                    |\n                                  Redis (Temp Hold)"
+    },
+    {
+        "id": 616,
+        "question": "Design Uber (Ride Sharing)",
+        "answer": "Connects drivers with riders.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Key Components\n1.  **Location Service:** Drivers update location every few seconds.\n2.  **QuadTree:** Efficient spatial indexing to find 'Drivers near Rider'.\n3.  **Matching Service:** Algorithms to pair Rider <-> Driver.\n4.  **Trip Management:** State machine (Requested -> Accepted -> InProgress -> Ended).\n\n### Location Storage\n- High write volume (Driver Pings). Redis (Geospatial) is good for latest location.\n- Cassandra for historical location data.\n",
+        "diagram": "Driver App --> Location Service --> Redis (QuadTree)\n                                        ^\n                                        |\nRider App --> Matching Service ---------+"
+    },
+    {
+        "id": 617,
+        "question": "Design a Distributed Cache",
+        "answer": "Shared cache system across multiple nodes.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "See Key-Value Store design. Focus on:\n- **Eviction Policies:** LRU, LFU.\n- **Cache Aside:** App talks to Cache, if miss, talks to DB.\n- **Write Through:** App writes to Cache, Cache writes to DB.\n- **Consistent Hashing:** For adding/removing cache nodes dynamically.\n",
+        "diagram": "App Server <--> Cache Cluster (Memcached/Redis)\n      |\n      +-------> Database"
+    },
+    {
+        "id": 618,
+        "question": "Design a Metric Monitoring System (Prometheus/Datadog)",
+        "answer": "Collect, aggregate, and visualize metrics.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Data Model\n- Time Series Database (TSDB) like InfluxDB or Prometheus TSDB.\n- Dimensions/Labels for tagging (e.g., host=server1, env=prod).\n\n### Pipeline\n1.  **Collection:** Push (App pushes to Collector) vs Pull (Collector scrapes App).\n2.  **Aggregation:** Rollups (1-min avg, 1-hour avg) to save space.\n3.  **Storage:** Optimized for heavy writes and range queries.\n4.  **Alerting:** Rules engine evaluating metric thresholds.\n",
+        "diagram": "App (Agent) --> Aggregator/Collector --> TSDB\n                                           |\n                                        Alert Manager\n                                           |\n                                        Dashboard (Grafana)"
+    },
+    {
+        "id": 619,
+        "question": "Design Nearby Friends (Location Based)",
+        "answer": "Show friends within a certain radius.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Approach\n1.  **Geohash:** Divide world into grids (strings). Nearby locations share common prefix.\n2.  **Client:** Periodic updates.\n3.  **Server:** When User A moves, notify all active friends subscribed to User A.\n4.  **Redis Pub/Sub:** Can be used for transient location updates.\n",
+        "diagram": "User A --> Location Server --> Redis\n                |\n           Notification Service --> User B (Friend)"
+    },
+    {
+        "id": 620,
+        "question": "Design a Unique ID Generator (Snowflake)",
+        "answer": "Generate unique IDs in a distributed environment.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Snowflake approach (Twitter)\n- **64-bit Integer:**\n    - 1 bit: Sign (unused)\n    - 41 bits: Timestamp (milliseconds since epoch)\n    - 10 bits: Machine ID (datacenter + worker ID)\n    - 12 bits: Sequence number (reset every millisecond)\n\n### Benefits\n- K-Sortable (roughly time ordered).\n- No coordination needed (no DB lock).\n- High throughput.\n",
+        "diagram": "[ 1 bit ][ 41 bits Timestamp ][ 5 bits DC ][ 5 bits Worker ][ 12 bits Seq ]"
+    },
+    {
+        "id": 621,
+        "question": "Design a Distributed Message Queue (Kafka)",
+        "answer": "A system to handle high throughput message passing.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Core Concepts\n- **Topics & Partitions:** Logic unit (Topic) split into physical limits (Partitions).\n- **Consumer Groups:** Allow parallel processing. One partition is consumed by only one consumer in a group.\n- **Offset:** Tracking position.\n\n### Durability\n- **Write Ahead Log (WAL):** Messages appended to log file.\n- **Replication:** Leader-Follower model. ISR (In-Sync Replicas).\n",
+        "diagram": "Producer --> Broker (Leader Partition) --> Follower Replicas\n                   |\n                   v\n              Consumer Group"
+    },
+    {
+        "id": 622,
+        "question": "Design an Online Payment System (Stripe/PayPal)",
+        "answer": "Securely process payments.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Key Requirements\n- **ACID Transactions:** Money cannot disappear.\n- **Idempotency:** Preventing double charge on retry.\n- **Audit Logging:** Track every state change.\n- **Security:** PCI-DSS compliance.\n\n### Flow\n1.  User initiates payment.\n2.  Generate Idempotency Key.\n3.  Start DB Transaction (Status: Pending).\n4.  Call Payment Gateway (Bank).\n5.  If success, Update DB (Status: Success).\n6.  If fail, Update DB (Status: Failed) or Retry logic.\n7.  Reconciliation Service runs nightly to match DB with Bank Statement.\n",
+        "diagram": "Client --> Payment Service --> Payment DB (ACID)\n                                |\n                            Bank Gateway\n                                |\n                          Reconciliation Job"
+    },
+    {
+        "id": 623,
+        "question": "Design a collaborative code editor (Google Docs/CodeSandbox)",
+        "answer": "Real-time collaborative editing.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Conflict Resolution\n- **Operational Transformation (OT):** Used by Google Docs. Transforms operations based on previous ops (Insert X at pos 0 vs Insert Y at pos 0).\n- **CRDT (Conflict-free Replicated Data Type):** Commutative operations. Easier to implement distributedly but higher memory.\n\n### Communication\n- WebSockets for character-by-character updates.\n",
+        "diagram": "Client A --> Editor Server (OT Engine) <-- Client B\n                         |\n                      Document DB"
+    },
+    {
+        "id": 624,
+        "question": "Design a Leaderboard System",
+        "answer": "Rank users based on score.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### High Level\n- **Redis Sorted Sets (ZSET):** Efficient O(log N) insert and retrieval by rank.\n    - `ZADD leaderboard <score> <user>`\n    - `ZREVRANGE leaderboard 0 9` (Top 10)\n\n### Scaling\n- If millions of users, sharding by User ID isn't enough for global rank.\n- **Approach:** Shard by score range (tiering) or use a specialized simplified approximations for global rank (Count-Min sketch) if exact rank isn't strictly needed for tail users.\n",
+        "diagram": "Game Client --> Score Service --> Redis (ZSet)\n                                      |\n                                   SQL DB (Permanent Record)"
+    },
+    {
+        "id": 625,
+        "question": "Design Facebook News Feed",
+        "answer": "Aggregating content from friends and pages.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Feed Publication\n- **Fan-out on Write (Push):** When user posts, push ID to all friends' feed lists (Redis). Fast read, slow write (Justin Bieber problem).\n- **Fan-out on Read (Pull):** Fetch all followings' posts and merge sort by time. Slow read.\n- **Hybrid:** Push for normal users, Pull for celebrities.\n",
+        "diagram": "User (Post) --> Post Service --> Fan-out Service --> Friends' Feed Cache (Redis)\n                                         |\n                                     Post DB"
+    },
+    {
+        "id": 626,
+        "question": "Design Tinder (Dating App)",
+        "answer": "Swipe left/right on nearby users.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Logic\n1.  **Geo-sharding:** Provide users within radius.\n2.  **Recommendation:** Scoring engine (Elo score).\n3.  **Active Users:** Only show users active in last 7 days.\n4.  **Swipes:** Store interaction. If A likes B, check if B already liked A. If yes -> Match.\n",
+        "diagram": "User --> Recommendation Engine --> Geo Index (Redis)\n                    |\n              Match Service <--> Match DB"
+    },
+    {
+        "id": 627,
+        "question": "Design Parking Garage",
+        "answer": "Manage parking spots for vehicles.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Objects\n- Garage, Floor, Spot (types: Compact, Large, Electric).\n- Vehicle (Car, Truck, Van).\n- Ticket.\n\n### Logic\n- **Entry:** Issue ticket, find nearest available spot strategy.\n- **Exit:** Calculate fee based on duration and rate strategy.\n- **Concurrency:** Optimistic locking on Spot allocation.\n",
+        "diagram": "Entry Terminal --> Parking Service --> Spot DB\n                                     |\n                               Payment Service"
+    },
+    {
+        "id": 628,
+        "question": "Design Vending Machine",
+        "answer": "Dispense items based on selection and money.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### State Machine\n- Idle -> Selection Made -> Money Inserted -> Dispensing -> Change Returned -> Idle.\n\n### Components\n- Inventory (Rack, Item).\n- Keypad.\n- Coin/Card Processor.\n",
+        "diagram": "State Design Pattern:\n[Idle] --select--> [HasSelection] --insert money--> [HasMoney] --dispense--> [Sold]"
+    },
+    {
+        "id": 629,
+        "question": "Design Elevator System",
+        "answer": "Control elevators to transport people.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Scheduling Algorithms\n1.  **FCFS:** Inefficient.\n2.  **SCAN (Elevator Algorithm):** Continue in current direction until no more requests, then reverse.\n3.  **Advanced:** Destination Dispatch (User enters floor before entering elevator).\n\n### Objects\n- ElevatorController, ElevatorCar, Door, FloorPanel.\n",
+        "diagram": "Panel Request --> Dispatcher (Algorithm) --> specific ElevatorController"
+    },
+    {
+        "id": 630,
+        "question": "Design Logging System (Splunk/ELK)",
+        "answer": "Centralized logging.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Agents\n- Run on every host (e.g., Filebeat). Tail log files.\n\n### Buffer\n- Kafka to handle spike in log volume.\n\n### Indexer\n- Logstash/Elasticsearch to parse and index.\n\n### Visualization\n- Kibana.\n",
+        "diagram": "Host (Filebeat) --> Kafka --> Logstash --> Elasticsearch --> Kibana"
+    },
+    {
+        "id": 631,
+        "question": "Design Digital Wallet",
+        "answer": "Store and transfer money.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Ledger\n- **Double Entry Bookkeeping:** Every transaction has a Debit and Credit. Sum must be 0.\n- **Audit:** History of all transactions.\n- **Security:** Encryption at rest (AES-256).\n",
+        "diagram": "User --> Wallet Service --> Ledger DB (Immutable Log)\n                                |\n                            User Balance Table (Snapshot)"
+    },
+    {
+        "id": 632,
+        "question": "Design Amazon (E-commerce)",
+        "answer": "Online shopping platform.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Services\n- **Catalog:** Read heavy. Cache aggressive.\n- **Cart:** Write heavy. Redis/Cassandra (Key: UserID, Value: Items).\n- **Order:** ACID required. State machine (Created, Paid, Shipped).\n- **Search:** Elasticsearch.\n",
+        "diagram": "Client --> API Gateway\n              |\n    +-----+------+-----+\n    |     |      |     |\n Catalog Cart  Order Search"
+    },
+    {
+        "id": 633,
+        "question": "Design Hotel Booking System (Airbnb)",
+        "answer": "Book rooms/homes.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Availability\n- **Geospatial Search:** Find listings in viewport.\n- **Date overlap:** Check if [start, end] overlaps with existing modification.\n- **Inventory:** SQL DB to handle transaction locks on 'booking' specific room/date.\n",
+        "diagram": "Search --> Geo Index\nBooking --> Inventory DB (Row Lock)"
+    },
+    {
+        "id": 634,
+        "question": "Design Hit Counter",
+        "answer": "Count hits in last 5 minutes.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Scalable approach\n- **Circular Array:** Array of size 300 (seconds). Index = timestamp % 300.\n- **Distributed:** Sharded counters. Aggregate later.\n",
+        "diagram": "Circular Buffer: [t1][t2]...[t300]"
+    },
+    {
+        "id": 635,
+        "question": "Design Job Scheduler (Quartz)",
+        "answer": "Execute tasks at specific times.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Architecture\n1.  **Job Store:** DB holding schedules (Cron, One-time).\n2.  **Scheduler:** Polls DB for 'due' jobs.\n3.  **Workers:** Execute logical task.\n4.  **Locking:** Ensure only one node picks up the job (Row lock `SELECT FOR UPDATE` or Redis lock).\n",
+        "diagram": "Scheduler --> Job DB (Lock) --> Task Queue --> Worker Pool"
+    },
+    {
+        "id": 636,
+        "question": "Design CDN (Content Delivery Network)",
+        "answer": "Serve static content from closest edge server.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### DNS Redirection\n- User asks for 'cdn.site.com'.\n- DNS server returns IP of Edge server closest to User.\n### Caching\n- Edge server checks cache. If miss, fetch from Origin.\n- Use Consistent Hashing for cache distribution.\n",
+        "diagram": "User --(DNS Request)--> Global DNS --> Returns Edge IP\nUser --(HTTP Get)----> Edge Server --(If Miss)--> Origin"
+    },
+    {
+        "id": 637,
+        "question": "Design Recommendation System (Netflix)",
+        "answer": "Suggest content user might like.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Methods\n1.  **Content-based Filtering:** Recommend similar items to what user liked.\n2.  **Collaborative Filtering:** Find similar users and recommend what they liked.\n3.  **Hybrid:** Combine both.\n4.  **Matrix Factorization / Deep Learning.**\n",
+        "diagram": "User History --> Model Training --> Feature Store\n                                        |\n                                   Inference Service --> User"
+    },
+    {
+        "id": 638,
+        "question": "Design Pastebin",
+        "answer": "Store text blobs.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "Similar to URL Shortener but stores text instead of URL.\n- **Storage:** Object Store (S3) for content, DB for metadata (link -> S3 path).\n- **Expiration:** Cleanup job for expired pastes.\n",
+        "diagram": "Client --> App Server --> Metadata DB\n                  |\n                  +----> Object Store"
+    },
+    {
+        "id": 639,
+        "question": "Design Hash Map",
+        "answer": "Implement a hash map.",
+        "category": "Coding",
+        "experienceLevel": "System Design",
+        "tags": [
+            "data-structures"
+        ],
+        "detailedSolution": "Use Array of LinkedLists (Chaining).\n- **Hash Function:** `key.hashCode() % capacity`.\n- **Put:** Find bucket. Iterate list. If key exists, update. Else add to end.\n- **Get:** Find bucket. Iterate list. Return value.\n- **Resize:** When Load Factor > 0.75, double capacity and rehash all entries.",
+        "diagram": "Array: [0] -> [K1,V1] -> [K2,V2]\n       [1] -> null\n       [2] -> [K3,V3]"
+    },
+    {
+        "id": 640,
+        "question": "Design LRU Cache",
+        "answer": "Least Recently Used Cache.",
+        "category": "Coding",
+        "experienceLevel": "System Design",
+        "tags": [
+            "data-structures"
+        ],
+        "detailedSolution": "### Data Structures\n- **HashMap:** `Key -> Node`. For O(1) access.\n- **Doubly Linked List:** Maintain order. Head = Most Recent, Tail = Least Recent.\n\n### Logic\n- **Get(key):** Check map. If exists, move Node to Head. Return val.\n- **Put(key, val):** if key exists, update val, move to Head. If new, create Node, add to Head, put in Map. If capacity full, remove Tail, remove from Map.\n",
+        "diagram": "Map: {A: NodeA, B: NodeB}\nList: Head <-> NodeA <-> NodeB <-> Tail"
+    },
+    {
+        "id": 641,
+        "question": "Design Zoom (Video Conferencing)",
+        "answer": "Real-time video/audio communication.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Protocols\n- **WebRTC:** For peer-to-peer (1:1).\n- **SFU (Selective Forwarding Unit):** Server receives stream from one client and forwards to others. Better for group calls.\n- **MCU (Multipoint Control Unit):** Server mixes streams into one. High CPU.\n\n### Optimization\n- **UDP:** Prefer over TCP for real-time media (packet loss ok).\n",
+        "diagram": "User A --> SFU Server <-- User B\n                 |\n              User C"
+    },
+    {
+        "id": 642,
+        "question": "Design Google Maps (Navigation)",
+        "answer": "Mapping and routing service.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Graph\n- **Nodes:** Intersections.\n- **Edges:** Roads (with weights = time/distance).\n\n### Routing\n- **A* Algorithm:** Finds shortest path efficiently.\n- **Contraction Hierarchies:** Pre-compute shortcuts for faster queries.\n- **ETA:** Historical traffic data + Real-time user location data.\n",
+        "diagram": "Client --> Route Service --> Graph DB (Road Network)\n                 |\n            Traffic Service (Real-time)"
+    },
+    {
+        "id": 643,
+        "question": "Design a File System (Google GFS / HDFS)",
+        "answer": "Distributed file system for large data sets.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Architecture\n- **Master (NameNode):** Stores Metadata (File Name -> Chunk IDs, Chunk Locations).\n- **ChunkServer (DataNode):** Stores actual data chunks (64MB). Replicated 3x.\n\n### Flow\n1.  Client asks Master for Chunk locations.\n2.  Master returns IP of ChunkServers.\n3.  Client writes data directly to ChunkServers (pipelined).\n",
+        "diagram": "Client --> Master (Metadata)\n     |\n     +----> ChunkServer 1 <--> ChunkServer 2"
+    },
+    {
+        "id": 644,
+        "question": "Design a Metrics Alerting System",
+        "answer": "Alert when metric breaches threshold.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Components\n1.  **Rule Evaluator:** periodically queries TSDB.\n2.  **Notification Manager:** Dedup alerts (don't storm email). Group by Service.\n3.  **State Store:** Track 'Firing' vs 'Resolved' state.\n",
+        "diagram": "TSDB --> Rule Engine --> Alert Manager --> PagerDuty/Email"
+    },
+    {
+        "id": 645,
+        "question": "Design a Distributed Counter (Like Counting Likes)",
+        "answer": "Count likes for millions of posts.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Sharded Counters\n- A single counter is a hotspot (lock contention).\n- **Solution:** Shard counter into N sub-counters. Randomly pick one to increment.\n- **Read:** Sum all N sub-counters.\n",
+        "diagram": "PostID | CounterIndex | Val\n123    | 1            | 50\n123    | 2            | 30\nTotal = 80"
+    },
+    {
+        "id": 646,
+        "question": "Design a Privacy Compliance System (GDPR)",
+        "answer": "Handle 'Right to be Forgotten'.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Challenge\nUser data is scattered across databases, logs, backups.\n\n### Approach\n1.  **Data Inventory:** Map where PII lives.\n2.  **Deletion Orchestrator:** Publishes 'DeleteUser' event.\n3.  **Services:** Listen to event and delete data. Acknowledge completion.\n4.  **Crypto-shredding:** Encrypt user data with unique key. Delete key to effectively delete data.\n",
+        "diagram": "Delete Request --> Orchestrator --> Kafka (Delete Topic)\n                                         |\n       +-------------+-------------------+\n       |             |                   |\n    User Service   Order Service       Log Service"
+    },
+    {
+        "id": 647,
+        "question": "Design a Recommendation System for E-commerce (Amazon)",
+        "answer": "Items you might like.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Association Rule Learning\n- **Apriori Algorithm:** 'People who bought X also bought Y'.\n- **Implementation:** Count co-occurrences in orders. Pre-compute matrix.\n",
+        "diagram": "Orders DB --> Spark Job (Association Rules) --> Key-Value Store (Item -> Related Items)"
+    },
+    {
+        "id": 648,
+        "question": "Design a Distributed Cron Service",
+        "answer": "Run jobs reliably across cluster.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Leader Election\n- One node is elected leader (via Zookeeper).\n- Leader reads schedules and pushes tasks to Queue.\n- Workers pick tasks.\n- If Leader dies, new election.\n",
+        "diagram": "Zookeeper --> Leader Node --> Task Queue --> Worker Pool\n                   ^ (Watch)\n              Standby Nodes"
+    },
+    {
+        "id": 649,
+        "question": "Design a KV Store with TTL (Time To Live)",
+        "answer": "Auto-expire keys.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Expiration Strategies\n1.  **Passive:** On read, check timestamp. If expired, delete and return null.\n2.  **Active:** Background thread samples keys with TTL. Delete expired.\n3.  **Redis approach:** Hybrid of Passive + Active.\n",
+        "diagram": "Client --GET--> Server (Checks Expiry) --> Return"
+    },
+    {
+        "id": 650,
+        "question": "Design a Flash Sale System",
+        "answer": "High traffic, limited inventory.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Bottlenecks\n- DB Locks.\n\n### Solution\n1.  **Queue:** Put all requests in Kafka.\n2.  **Inventory Cache:** Decrement in Redis (Lua script) first. If success, process async.\n3.  **Rate Limit:** Aggressive limiting at edge.\n4.  **Static Content:** CDN for page.\n",
+        "diagram": "User --> Load Balancer --> Redis (Inventory Check)\n                                |\n                          Kafka (If valid)\n                                |\n                          Order Consumer"
+    },
+    {
+        "id": 651,
+        "question": "Design a Flight Booking System",
+        "answer": "Handling concurrent bookings.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "See Ticketmaster/Parking. Key is ACID compliance and Overbooking strategy (business logic).",
+        "diagram": "Booking -> Transaction(Select Seat, Payment, Confirm)"
+    },
+    {
+        "id": 652,
+        "question": "Design a Distributed ID Generator (UUID vs Snowflake)",
+        "answer": "Creating unique identifiers.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "UUID (128-bit, random, no order). Snowflake (64-bit, ordered, numeric). Choose based on need for sorting and storage size.",
+        "diagram": "UUID: Random Hex String\nSnowflake: [Timestamp][MachineID][Seq]"
+    },
+    {
+        "id": 653,
+        "question": "Design a Content Moderation System",
+        "answer": "Filter bad content.",
+        "category": "System Design",
+        "experienceLevel": "System Design",
+        "tags": [
+            "system-design"
+        ],
+        "detailedSolution": "### Pipeline\n1.  User Uploads.\n2.  **Automated Check:** AI Model (TensorFlow) for Nudity/Violence.\n3.  **Hash Match:** Check against known bad hashes (PDQ).\n4.  **Manual Review:** If unsure (>50% confidence), send to human queue.\n",
+        "diagram": "Upload --> AI Service --> (Safe?) --> Publish\n                |\n            (Unsure?) --> Operation Queue --> Human"
     }
 ]

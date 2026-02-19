@@ -15,8 +15,8 @@ def merge_questions():
         
     print(f"Original count: {len(all_questions)}")
     
-    # Find all temp files
-    temp_files = glob.glob(os.path.join(base_path, 'temp_questions_*.json'))
+    # Find all temp files (questions and system design)
+    temp_files = glob.glob(os.path.join(base_path, 'temp_*.json'))
     
     for temp_file in temp_files:
         print(f"Processing {temp_file}...")

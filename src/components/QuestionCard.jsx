@@ -13,8 +13,8 @@ const CodeTabs = ({ snippets }) => {
                         key={index}
                         onClick={() => setActiveTab(index)}
                         className={`px-4 py-2 text-sm font-medium transition-colors ${activeTab === index
-                                ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-400/10'
-                                : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/50'
+                            ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-400/10'
+                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700/50'
                             }`}
                     >
                         {snippet.lang}
@@ -136,10 +136,28 @@ const QuestionCard = ({ questionData }) => {
                                     {questionData.answer}
                                 </p>
 
+                                {questionData.detailedSolution && (
+                                    <div className="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                                        <h4 className="text-md font-semibold text-blue-400 mb-2">Detailed Solution:</h4>
+                                        <div className="text-gray-300 whitespace-pre-wrap font-mono text-sm">
+                                            {questionData.detailedSolution}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {questionData.diagram && (
+                                    <div className="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                                        <h4 className="text-md font-semibold text-purple-400 mb-2">Diagram:</h4>
+                                        <div className="overflow-x-auto">
+                                            <pre className="text-xs text-gray-400 whitespace-pre">{questionData.diagram}</pre>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {questionData.codeSnippets ? (
                                     <CodeTabs snippets={questionData.codeSnippets} />
                                 ) : questionData.codeSnippet ? (
-                                    <div className="code-block">
+                                    <div className="code-block mt-4">
                                         <pre>
                                             <code>{questionData.codeSnippet}</code>
                                         </pre>
