@@ -85,29 +85,34 @@ const CompilerPage = () => {
                     </h1>
                 </div>
 
-                <div className="flex gap-4">
-                    <select
-                        value={language}
-                        onChange={(e) => handleLanguageChange(e.target.value)}
-                        className="bg-gray-800 text-white border border-gray-700 rounded px-3 py-1.5 focus:outline-none focus:border-blue-500 transition-colors"
-                    >
-                        <option value="javascript">JavaScript</option>
-                        <option value="python">Python</option>
-                        <option value="java">Java</option>
-                        <option value="c">C</option>
-                        <option value="cpp">C++</option>
-                    </select>
+                <div className="flex gap-4 items-center">
+                    <div className="flex items-center gap-2">
+                        <span className="text-gray-400 font-medium">Language:</span>
+                        <select
+                            value={language}
+                            onChange={(e) => handleLanguageChange(e.target.value)}
+                            style={{ backgroundColor: "#1f2937", color: "white" }}
+                            className="border border-gray-700 rounded px-3 py-1.5 focus:outline-none focus:border-blue-500 transition-colors"
+                        >
+                            <option value="java">Java</option>
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="c">C</option>
+                            <option value="cpp">C++</option>
+                        </select>
+                    </div>
 
                     <button
                         onClick={executeCode}
                         disabled={isLoading}
-                        className={`flex items-center gap-2 px-4 py-1.5 rounded font-medium transition-all ${isLoading
-                            ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-                            : "bg-green-600 hover:bg-green-500 text-white shadow-lg shadow-green-500/20"
+                        style={isLoading ? {} : { backgroundColor: "#0a0a0a", color: "#4ade80", borderColor: "#22c55e" }}
+                        className={`flex items-center gap-2 px-6 py-2 rounded-lg border-2 font-bold tracking-wide transition-all ${isLoading
+                            ? "bg-gray-700 text-gray-400 cursor-not-allowed border-gray-600"
+                            : "shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]"
                             }`}
                     >
-                        {isLoading ? <Loader className="animate-spin" size={16} /> : <Play size={16} />}
-                        {isLoading ? "Running..." : "Run Code"}
+                        {isLoading ? <Loader className="animate-spin" size={18} /> : <Play size={18} fill="currentColor" />}
+                        <span>{isLoading ? "Running..." : "Run Code"}</span>
                     </button>
                 </div>
             </div>
