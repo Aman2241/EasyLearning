@@ -1,6 +1,7 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import IntroScreen from './components/IntroScreen';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -18,30 +19,38 @@ const Loading = () => (
 );
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
-    <Router>
-      <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f1f5f9', position: 'relative' }}>
-        <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%', borderRadius: '50%', background: 'rgba(59, 130, 246, 0.1)', filter: 'blur(100px)' }} />
-          <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '40%', borderRadius: '50%', background: 'rgba(168, 85, 247, 0.1)', filter: 'blur(100px)' }} />
-        </div>
+    <>
+      {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
 
-        <Header />
+      <div style={{ display: showIntro ? 'none' : 'block' }}>
+        <Router>
+          <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f1f5f9', position: 'relative' }}>
+            <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%', borderRadius: '50%', background: 'rgba(59, 130, 246, 0.1)', filter: 'blur(100px)' }} />
+              <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '40%', borderRadius: '50%', background: 'rgba(168, 85, 247, 0.1)', filter: 'blur(100px)' }} />
+            </div>
 
-        <main style={{ position: 'relative', zIndex: 10, minHeight: '100vh' }}>
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/topic/:topicId" element={<TopicPage />} />
-              <Route path="/concepts" element={<ConceptsPage />} />
-              <Route path="/interview-questions" element={<InterviewQuestionsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/compiler" element={<CompilerPage />} />
-            </Routes>
-          </Suspense>
-        </main>
+            <Header />
+
+            <main style={{ position: 'relative', zIndex: 10, minHeight: '100vh' }}>
+              <Suspense fallback={<Loading />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/topic/:topicId" element={<TopicPage />} />
+                  <Route path="/concepts" element={<ConceptsPage />} />
+                  <Route path="/interview-questions" element={<InterviewQuestionsPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/compiler" element={<CompilerPage />} />
+                </Routes>
+              </Suspense>
+            </main>
+          </div>
+        </Router>
       </div>
-    </Router>
+    </>
   );
 }
 
